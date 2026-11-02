@@ -36,6 +36,7 @@ def header(active=''):
 
 def footer():
     socials=''.join(f'<a href="{esc(v)}" rel="noopener noreferrer">{esc(k)} ↗</a>' for k,v in SITE.get('socials',{}).items() if v.startswith('https://'))
+    if SITE.get('whatsapp'): socials+='<a href="https://wa.me/'+''.join(c for c in SITE['whatsapp'] if c.isdigit())+'">WhatsApp ↗</a>'
     return f'''<footer><div class="footer-top"><div><a href="{url()}" class="wordmark"><img class="brand-logo" src="{url("assets/logo.svg")}" alt="Zawatu" width="200" height="45"></a><p>Des histoires qui ouvrent des portes.</p></div><div><span class="eyebrow">EXPLORER</span>{link('agence/','L’agence')}{link('services/','Nos expertises')}{link('journal/','Le blog')}</div><div><span class="eyebrow">COLLABORER</span>{link('campagnes/','Concepts de campagne')}{link('partenariats/','Médias & partenaires')}{link('contact/','Préparer un projet')}</div><div><span class="eyebrow">NOTRE BUREAU</span><p>Bancobu Ikirezi<br>Nouveau bâtiment, 5e étage<br>Burundi</p><p>Médias · Marketing<br>Relations publiques<br>Partenariats commerciaux</p>{socials}</div></div><div class="footer-bottom"><span>© 2026 Zawatu</span>{link('transparence/','Transparence & confidentialité')}<span>Clarté. Créativité. Connexions.</span></div></footer>'''
 
 def write(path,title,desc,body,active='',article=None):

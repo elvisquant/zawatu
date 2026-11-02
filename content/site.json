@@ -2,8 +2,10 @@
   "name": "Zawatu",
   "url": "https://zawatu.com",
   "email": "hello@zawatu.com",
-  "whatsapp": "",
-  "socials": {},
+  "whatsapp": "+25771400138",
+  "socials": {
+    "facebook": "https://www.facebook.com/share/18cqF42qcA/"
+  },
   "publisher": "",
   "address": "Bancobu Ikirezi, new building, 5th floor, Burundi",
   "booking_url": "",
@@ -15,5 +17,6 @@
     "BIF": 100000,
     "USD": 35
   },
-  "consultation_payment_mode": "manual_before_scheduling"
+  "consultation_payment_mode": "manual_before_scheduling",
+  "technical_linkedin": "https://www.linkedin.com/in/ndayishimiye-elvis-821bb7207/"
 }
