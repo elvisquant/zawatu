@@ -57,7 +57,7 @@ def articlecard(a,i):
 if OUT.exists(): shutil.rmtree(OUT)
 (OUT/'assets').mkdir(parents=True)
 shutil.copy(ROOT/'assets/legacy.css',OUT/'assets/site.css')
-for name in ['site.js','favicon.svg','logo.svg','logo-white.svg']: shutil.copy(ROOT/'assets'/name,OUT/'assets'/name)
+for name in ['site.js','favicon.svg','logo.svg','logo-white.svg','symbol.svg','symbol-white.svg']: shutil.copy(ROOT/'assets'/name,OUT/'assets'/name)
 (OUT/'.nojekyll').touch()
 PAGES=[]
 
