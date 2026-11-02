@@ -25,3 +25,19 @@ if(document.documentElement.lang==='en'){
  document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{const count=[...document.querySelectorAll('[data-category]')].filter(a=>!a.hidden).length;document.querySelector('#result-count').textContent=count+' article'+(count===1?'':'s');}));
  document.querySelector('#article-search')?.addEventListener('input',()=>{const count=[...document.querySelectorAll('[data-category]')].filter(a=>!a.hidden).length;document.querySelector('#result-count').textContent=count+' article'+(count===1?'':'s');});
 }
+
+// Inquiry preparation only: no backend submission or appointment confirmation.
+document.querySelectorAll('.consultation-inquiry').forEach(form=>{
+ form.addEventListener('submit',event=>{
+  event.preventDefault();
+  const data=new FormData(form),business=form.dataset.kind==='business';
+  const subject=business?'Business consultation request — Zawatu':'Technical consulting inquiry — Elvis';
+  const lines=[subject,'Name: '+data.get('name'),'Email: '+data.get('email'),'Business / project: '+data.get('company')];
+  if(business)lines.push('Selected fee: '+(data.get('currency')==='USD'?'US$35':'100,000 BIF'),'Format: 45 minutes via Google Meet');
+  else lines.push('Area: '+data.get('area'),'Fee: please provide a scoped quotation');
+  lines.push('Challenge: '+data.get('details'),'Desired outcome / timeline: '+data.get('outcome'),'Please confirm scope, payment instructions and applicable cancellation, rescheduling and refund terms before payment.');
+  const status=form.querySelector('.inquiry-status');
+  status.textContent='Your email app should open with a draft. Review and send it there. This website has not submitted your inquiry or reserved an appointment.';
+  window.location.href='mailto:'+form.dataset.email+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(lines.join('\n\n'));
+ });
+});

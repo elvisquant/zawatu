@@ -9,5 +9,11 @@
   "booking_url": "",
   "consultation_duration": 45,
   "consultation_fee": "",
-  "consultation_currency": ""
+  "consultation_currency": "",
+  "technical_email": "elvis@zawatu.com",
+  "consultation_prices": {
+    "BIF": 100000,
+    "USD": 35
+  },
+  "consultation_payment_mode": "manual_before_scheduling"
 }
