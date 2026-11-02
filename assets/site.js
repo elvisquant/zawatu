@@ -7,7 +7,7 @@ function filterArticles(){const query=normalize(document.querySelector('#article
 document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{selectedCategory=b.dataset.filter;document.querySelectorAll('[data-filter]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));filterArticles();}));
 document.querySelector('#article-search')?.addEventListener('input',filterArticles);
 document.querySelector('#brief-form')?.addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.target);const fields=[['Entreprise / projet','company'],['Nom','name'],['Objectif','objective'],['Budget indicatif','budget'],['Calendrier','timeline'],['Public et contexte','details']];const content='BRIEF DE PROJET — ZAWATU\n\n'+fields.map(([label,key])=>`${label} : ${f.get(key)||'Non précisé'}`).join('\n\n')+'\n\nDocument généré sur votre appareil. Aucune demande n’a été transmise à Zawatu.\n';const blobUrl=URL.createObjectURL(new Blob([content],{type:'text/plain;charset=utf-8'}));const a=document.createElement('a');a.href=blobUrl;a.download='brief-zawatu.txt';a.click();setTimeout(()=>URL.revokeObjectURL(blobUrl),1000);document.querySelector('#brief-status').textContent='Brief téléchargé. Aucun envoi n’a été effectué.';});
-document.querySelector('.share-link')?.addEventListener('click',async()=>{const status=document.querySelector('.share-status');try{await navigator.clipboard.writeText(location.href);status.textContent='Lien copié.';}catch{status.textContent='Copiez le lien dans la barre d’adresse.';}});
+document.querySelector('.share-link')?.addEventListener('click',async()=>{const status=document.querySelector('.share-status');try{await navigator.clipboard.writeText(location.href);status.textContent=document.documentElement.lang==='en'?'Article link copied.':'Lien copié.';}catch{status.textContent=document.documentElement.lang==='en'?'Copy the address from your browser.':'Copiez le lien dans la barre d’adresse.';}});
 const appointmentForm=document.querySelector('#appointment-form');
 if(appointmentForm){
  const dateField=appointmentForm.querySelector('[name=date]');
@@ -34,7 +34,7 @@ document.querySelectorAll('.consultation-inquiry').forEach(form=>{
   const subject=business?'Business consultation request — Zawatu':'Technical consulting inquiry — Elvis';
   const lines=[subject,'Name: '+data.get('name'),'Email: '+data.get('email'),'Business / project: '+data.get('company')];
   if(business)lines.push('Selected fee: '+(data.get('currency')==='USD'?'US$35':'100,000 BIF'),'Format: 45 minutes via Google Meet');
-  else lines.push('Area: '+data.get('area'),'Fee: please provide a scoped quotation');
+  else lines.push('Area: '+data.get('area'),'Engagement: '+data.get('engagement'),'Indicative budget: '+(data.get('budget')||'To be discussed'),'Fee: please provide a scoped quotation');
   lines.push('Challenge: '+data.get('details'),'Desired outcome / timeline: '+data.get('outcome'),'Please confirm scope, payment instructions and applicable cancellation, rescheduling and refund terms before payment.');
   const status=form.querySelector('.inquiry-status');
   status.textContent='Your email app should open with a draft. Review and send it there. This website has not submitted your inquiry or reserved an appointment.';
