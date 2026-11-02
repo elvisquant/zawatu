@@ -32,11 +32,11 @@ SERVICES = [
 def header(active=''):
     items=[('agence/','L’agence','agence'),('services/','Expertises','services'),('campagnes/','Concepts','campagnes'),('journal/','Le blog','journal')]
     nav=''.join(f'<a href="{url(p)}" {"aria-current=page" if k==active else ""}>{t}</a>' for p,t,k in items)
-    return f'''<a class="skip" href="#contenu">Aller au contenu</a><header><a href="{url()}" class="wordmark" aria-label="Zawatu accueil">zawatu<span>↗</span></a><button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menu <span>＋</span></button><nav id="main-nav" aria-label="Navigation principale">{nav}{link('contact/','Contact','nav-cta')}<a href="{os.environ.get('SITE_BASE_PATH','').rstrip('/')+'/'}">EN</a></nav></header>'''
+    return f'''<a class="skip" href="#contenu">Aller au contenu</a><header><a href="{url()}" class="wordmark" aria-label="Zawatu accueil"><img class="brand-logo" src="{url("assets/logo.svg")}" alt="Zawatu" width="200" height="45"></a><button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menu <span>＋</span></button><nav id="main-nav" aria-label="Navigation principale">{nav}{link('contact/','Contact','nav-cta')}<a href="{os.environ.get('SITE_BASE_PATH','').rstrip('/')+'/'}">EN</a></nav></header>'''
 
 def footer():
     socials=''.join(f'<a href="{esc(v)}" rel="noopener noreferrer">{esc(k)} ↗</a>' for k,v in SITE.get('socials',{}).items() if v.startswith('https://'))
-    return f'''<footer><div class="footer-top"><div><a href="{url()}" class="wordmark">zawatu<span>↗</span></a><p>Des histoires qui ouvrent des portes.</p></div><div><span class="eyebrow">EXPLORER</span>{link('agence/','L’agence')}{link('services/','Nos expertises')}{link('journal/','Le blog')}</div><div><span class="eyebrow">COLLABORER</span>{link('campagnes/','Concepts de campagne')}{link('partenariats/','Médias & partenaires')}{link('contact/','Préparer un projet')}</div><div><span class="eyebrow">NOTRE BUREAU</span><p>Bancobu Ikirezi<br>Nouveau bâtiment, 5e étage<br>Burundi</p><p>Médias · Marketing<br>Relations publiques<br>Partenariats commerciaux</p>{socials}</div></div><div class="footer-bottom"><span>© 2026 Zawatu</span>{link('transparence/','Transparence & confidentialité')}<span>Clarté. Créativité. Connexions.</span></div></footer>'''
+    return f'''<footer><div class="footer-top"><div><a href="{url()}" class="wordmark"><img class="brand-logo" src="{url("assets/logo.svg")}" alt="Zawatu" width="200" height="45"></a><p>Des histoires qui ouvrent des portes.</p></div><div><span class="eyebrow">EXPLORER</span>{link('agence/','L’agence')}{link('services/','Nos expertises')}{link('journal/','Le blog')}</div><div><span class="eyebrow">COLLABORER</span>{link('campagnes/','Concepts de campagne')}{link('partenariats/','Médias & partenaires')}{link('contact/','Préparer un projet')}</div><div><span class="eyebrow">NOTRE BUREAU</span><p>Bancobu Ikirezi<br>Nouveau bâtiment, 5e étage<br>Burundi</p><p>Médias · Marketing<br>Relations publiques<br>Partenariats commerciaux</p>{socials}</div></div><div class="footer-bottom"><span>© 2026 Zawatu</span>{link('transparence/','Transparence & confidentialité')}<span>Clarté. Créativité. Connexions.</span></div></footer>'''
 
 def write(path,title,desc,body,active='',article=None):
     canonical=ORIGIN+url(path)
@@ -57,7 +57,7 @@ def articlecard(a,i):
 if OUT.exists(): shutil.rmtree(OUT)
 (OUT/'assets').mkdir(parents=True)
 shutil.copy(ROOT/'assets/legacy.css',OUT/'assets/site.css')
-for name in ['site.js','favicon.svg']: shutil.copy(ROOT/'assets'/name,OUT/'assets'/name)
+for name in ['site.js','favicon.svg','logo.svg','logo-white.svg']: shutil.copy(ROOT/'assets'/name,OUT/'assets'/name)
 (OUT/'.nojekyll').touch()
 PAGES=[]
 
