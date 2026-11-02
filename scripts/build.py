@@ -7,3 +7,6 @@ if (root/'dist').exists(): shutil.rmtree(root/'dist')
 runpy.run_path(str(root/'scripts/build_fr.py'))
 from global_site import build
 build()
+
+from brand_assets import build as build_brand_assets
+build_brand_assets()
