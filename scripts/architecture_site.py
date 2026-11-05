@@ -2,6 +2,7 @@
 import html,json,os,shutil
 from pathlib import Path
 from xml.sax.saxutils import escape
+from zaf_dossier import publish as publish_zaf
 from practice_content import case_teaser, journal_cards, profile_evidence, publish_deep_pages, D as PRACTICE
 R=Path(__file__).resolve().parents[1]; O=R/'dist'; S=json.loads((R/'content/site.json').read_text()); BASE=os.getenv('SITE_BASE_PATH','').rstrip('/'); HOST=os.getenv('SITE_URL',S['url']).rstrip('/')
 ART=[a for a in json.loads((R/'content/articles_en.json').read_text()) if a.get('track')=='engineering']
@@ -60,9 +61,7 @@ def build():
    body+=section('<h2>'+('Livrables possibles' if fr else 'Potential deliverables')+'</h2><ul class="deliverables">'+''.join(f'<li>{e(x)}</li>' for x in examples)+'</ul><p class="fine">'+t['reviewnote']+'</p>')
    if s[0]=='data-engineering':body+=section('<h2>'+('Préparer les données pour l’IA.' if fr else 'Prepare the foundations for AI.')+'</h2><p>'+('Clarifier la qualité, les droits, la provenance et la disponibilité des données avant de proposer un usage de l’IA. Définir des critères d’évaluation et une supervision humaine adaptés au risque.' if fr else 'Assess data quality, access, provenance and availability before proposing an AI use case. Define evaluation criteria and human oversight appropriate to the risk.')+'</p>','soft')
    page('services/'+s[0]+'/',title,desc,body+cta())
-  stage_details=(['Cartographier les systèmes, les données et les responsables.','Évaluer les exigences, les preuves et les pratiques.','Identifier les écarts et prioriser leurs conséquences.','Énoncer les règles qui guideront les décisions.','Décrire les frontières, composants et flux proposés.','Associer les capacités aux technologies adaptées.','Expliquer les coûts, risques et options écartées.','Prévoir les conditions d’évolution et de réévaluation.','Présenter les décisions, responsabilités et prochaines étapes.'] if fr else ['Map systems, data flows and accountable owners.','Assess requirements, evidence and operating practices.','Identify gaps and prioritize their consequences.','State the principles that guide design decisions.','Describe proposed boundaries, components and flows.','Map capabilities to technology suited to the constraints.','Explain costs, risks and the alternatives set aside.','Define triggers for evolution and reassessment.','Summarize decisions, responsibilities and next steps.'])
-  stages='<h2>'+('Neuf étapes de réflexion' if fr else 'Nine stages of architectural thinking')+'</h2><div class="zaf-stages">'+''.join(f'<article><span class="eyebrow">{i+1:02d}</span><h3>{x}</h3><p>{stage_details[i]}</p></article>' for i,x in enumerate(t['stages']))+'</div>'
-  page('zaf/','Zawatu Architecture Framework',t['zafintro'],hero('ZAF','Zawatu Architecture Framework',t['zafintro'])+section(f'<p class="method-note">{t["zafnote"]}</p>'+stages)+section('<ul class="deliverables">'+''.join(f'<li>{x}</li>' for x in t['principles'])+'</ul>','soft')+section(case_teaser(lang,link),'soft')+cta())
+  publish_zaf(lang,page,hero,section,link,cta)
   methods='<ol class="architecture-method">'+''.join(f'<li><h2>{name}</h2><p>{desc}</p></li>' for name,desc in t['steps'])+'</ol>'
   page('approach/',t['nav'][2],t['approach'],hero(t['nav'][2],t['approach'],t['reviewnote'])+section(methods)+cta())
   profile=section(f'<div class="profile-section"><div class="profile-mark">EN<span>{t["profileintro"]}</span></div><div><h2>{t["profile"]}</h2><p>{t["profilebody"]}</p><p>{t["profilenote"]}</p><a class="text-link" href="{S["technical_linkedin"]}" rel="noopener noreferrer">LinkedIn ↗</a><p><a href="mailto:{S["technical_email"]}">{S["technical_email"]}</a></p></div></div>')+section(profile_evidence(lang,link))
