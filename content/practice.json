@@ -1,0 +1,1348 @@
+{
+  "case": {
+    "slug": "institutional-operations",
+    "en": {
+      "title": "From fragmented approvals to an accountable operational platform",
+      "summary": "A worked ZAF assessment: current state, evidence gaps, architecture boundaries, decision records and a phased verification plan.",
+      "blocks": [
+        {
+          "type": "note",
+          "text": "Illustrative architecture study · Fictional institution · No client endorsement, production deployment or measured outcome is claimed. All volumes, targets and findings below are scenario assumptions."
+        },
+        {
+          "type": "h2",
+          "text": "The brief: make an approved decision traceable"
+        },
+        {
+          "type": "p",
+          "text": "A fictional institution operates a headquarters and six regional offices. Requests for operational expenditure move through spreadsheets, email and a small legacy application. Finance prepares a consolidated report by reconciling exports. Managers need to know what was requested, who approved it, which amount is authoritative and whether the report is current. The starting question is not which cloud or programming language to choose. It is where an institutional decision becomes authoritative, and how that decision remains explainable."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Scenario constraint",
+            "Working assumption",
+            "Evidence needed before contracting"
+          ],
+          "rows": [
+            [
+              "People and scale",
+              "120 named users; 20 concurrent users; two engineers supporting the service",
+              "Access roster, representative traffic and support capacity"
+            ],
+            [
+              "Connectivity",
+              "Branch connections may fail for several hours",
+              "Outage history, device and power assessment"
+            ],
+            [
+              "Information ownership",
+              "Sensitive operational records remain under institutional control",
+              "Classification, hosting approval and retention decisions"
+            ],
+            [
+              "Recovery",
+              "Candidate RPO: 24 hours; candidate RTO: 4 hours",
+              "Business impact assessment and successful timed restore"
+            ],
+            [
+              "Reporting",
+              "Daily report by 09:00 Central Africa Time",
+              "Owner-approved definitions and reconciliation sample"
+            ]
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "01 / Current state: follow one request"
+        },
+        {
+          "type": "p",
+          "text": "The sample journey is request → departmental review → finance approval → fulfilment → reconciliation. In this fictional baseline, each office assigns its own reference, email acts as the approval record and the report combines extracts taken at different times. A corrected spreadsheet can overwrite the version that an approver actually saw. These are deliberately constructed assessment findings, not observations about a named institution."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Boundary",
+            "Authority today",
+            "Failure to investigate"
+          ],
+          "rows": [
+            [
+              "Branch to reviewer",
+              "Spreadsheet and email thread",
+              "Duplicate reference, missing attachment or uncertain version"
+            ],
+            [
+              "Approval to fulfilment",
+              "Copied status in legacy application",
+              "Action performed after approval was changed"
+            ],
+            [
+              "Operations to reporting",
+              "Manual export and reconciliation",
+              "Late records and inconsistent reporting cut-off"
+            ]
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "02 / Assessment: ask what can be proved"
+        },
+        {
+          "type": "p",
+          "text": "An assessment would sample completed and rejected requests, examine role permissions and compare a report to its source transactions. Interviews explain intended practice; records and tests show actual behaviour. A recovery claim needs a restored environment and an observed duration. An access policy needs negative permission tests, not only a list of roles. Unknowns stay visible rather than being assigned a reassuring score."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Business owner: validate the approval path and exception authority.",
+            "Finance owner: approve metric definitions, cut-off and reconciliation rules.",
+            "System owner: demonstrate access boundaries, release history and restore procedure.",
+            "Data owner: approve classification, permitted destinations and retention."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "03 / Gaps: rank consequences before features"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Priority",
+            "Gap in this scenario",
+            "Consequence",
+            "First verification"
+          ],
+          "rows": [
+            [
+              "P1",
+              "No authoritative approval version",
+              "Execution may not match the approved request",
+              "Replay a changed request through approval and fulfilment"
+            ],
+            [
+              "P1",
+              "Restore procedure has not been demonstrated",
+              "An incident may prevent recovery within the business window",
+              "Restore an isolated copy and verify record completeness"
+            ],
+            [
+              "P2",
+              "Exports use different definitions and cut-offs",
+              "Management compares incompatible figures",
+              "Reconcile one known period using an agreed definition"
+            ],
+            [
+              "P2",
+              "Connectivity retries have no duplicate protection",
+              "A repeated submission may create two requests",
+              "Retry the same command after an ambiguous timeout"
+            ]
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "04 / Principles: make the decision rules explicit"
+        },
+        {
+          "type": "list",
+          "items": [
+            "One authoritative owner for each business fact; copies expose their source and freshness.",
+            "Authorization and workflow transitions are enforced on the server.",
+            "A submitted request records the version of the information being approved.",
+            "A retry must not silently create a second business operation.",
+            "Sensitive data placement and retention follow approved policy.",
+            "Architecture complexity must fit the people who will operate it."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "05 / Recommended architecture"
+        },
+        {
+          "type": "p",
+          "text": "Start with a modular application and a relational database. Keep workflow, authorization, operational records and reporting responsibilities explicit within the application. This preserves a single transactional boundary for approval changes without requiring the team to operate several independently deployed services. The choice is provisional: it follows the assumed team size and workload, rather than a rule that monoliths are always preferable."
+        },
+        {
+          "type": "diagram",
+          "kind": "architecture"
+        },
+        {
+          "type": "p",
+          "text": "The browser sends authenticated commands to an application API. The API checks permissions and the expected record version, then commits the approved transition, audit entry and any outbox event in one database transaction. An asynchronous worker handles notifications and builds report projections. Notification failure does not reverse an already committed approval. Consumers must tolerate duplicate delivery; an outbox alone does not establish end-to-end exactly-once processing."
+        },
+        {
+          "type": "diagram",
+          "kind": "decision"
+        },
+        {
+          "type": "p",
+          "text": "An auditable workflow history is not automatically tamper-proof. Administrative access, database privileges, retention, export verification and backup protection still require design. Attachment storage is a separate access-controlled boundary; it is omitted from the simplified diagram, along with the identity provider and backup destination."
+        },
+        {
+          "type": "h2",
+          "text": "Connectivity is a consistency decision"
+        },
+        {
+          "type": "p",
+          "text": "Phase one preserves a local draft and clearly marks it as unsent when connectivity is lost. No offline approval or execution is treated as final. After reconnection, the client submits with a stable command identifier and expected version. If the request changed while disconnected, the server rejects the stale transition and asks the user to review the current version. Lost responses are reconciled by looking up the command identifier. Offline finalization would require an explicit conflict and delegation policy; it is not promised by adding a cache."
+        },
+        {
+          "type": "h2",
+          "text": "06 / Technology mapping"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Capability",
+            "Candidate mapping",
+            "Reason and operating obligation"
+          ],
+          "rows": [
+            [
+              "Business workflow and API",
+              "Modular backend; final language selected with maintainers",
+              "Clear domain boundaries, permission tests and migration ownership"
+            ],
+            [
+              "Transactional state",
+              "PostgreSQL",
+              "Constraints and transactions; test concurrency and restoration"
+            ],
+            [
+              "Background work",
+              "Database outbox and a small worker",
+              "Recoverable retries, bounded batches, deduplication and visible failures"
+            ],
+            [
+              "Attachments",
+              "Institution-controlled protected storage",
+              "Access checks, limits, retention and backup consistency"
+            ],
+            [
+              "Deployment",
+              "Versioned containers on approved infrastructure",
+              "Document patching, secrets, rollback and recovery ownership"
+            ],
+            [
+              "Reporting",
+              "Versioned read models and reconciliation jobs",
+              "Expose reporting cut-off, source coverage and rejected records"
+            ]
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "07 / Decision records and trade-offs"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Decision",
+            "Alternative considered",
+            "Accepted cost",
+            "Revisit when"
+          ],
+          "rows": [
+            [
+              "ADR-001: modular application first",
+              "Independent microservices",
+              "Shared release lifecycle; module boundaries need discipline",
+              "Separate teams or measured isolation/scaling needs justify the operational cost"
+            ],
+            [
+              "ADR-002: asynchronous notifications",
+              "Send notifications inside the approval transaction",
+              "Delivery can be delayed; worker and retry operations are needed",
+              "A time-critical delivery requirement is demonstrated"
+            ],
+            [
+              "ADR-003: drafts offline, approvals online",
+              "Allow final approvals offline",
+              "A branch cannot finalize during an outage",
+              "The institution approves conflict, delegation and reconciliation rules"
+            ],
+            [
+              "ADR-004: daily reporting first",
+              "Streaming analytics platform",
+              "Up to one reporting cycle of delay",
+              "An agreed decision requires fresher data and the team can support it"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Kafka, Kubernetes and a separate warehouse are not phase-one requirements in this scenario. They may become appropriate when measured throughput, isolation, independent delivery or analytical history needs justify them. Adding them now would create operational responsibilities without answering the highest-ranked gaps."
+        },
+        {
+          "type": "h2",
+          "text": "08 / Verification and phased delivery"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Phase",
+            "Deliverable",
+            "Exit evidence"
+          ],
+          "rows": [
+            [
+              "Discover",
+              "Approved current-state map, sample records and requirements",
+              "Named owners resolve the approval and reporting definitions"
+            ],
+            [
+              "Design",
+              "Boundary diagrams, data model, threat review and decision records",
+              "Stakeholders walk through normal, rejected and interrupted journeys"
+            ],
+            [
+              "Pilot",
+              "One branch and one request type",
+              "Permission checks, concurrent update tests, retry tests and reconciliation pass"
+            ],
+            [
+              "Recover",
+              "Backup and restoration exercise",
+              "Timed restoration meets approved objectives and reconciles known records"
+            ],
+            [
+              "Expand",
+              "Controlled rollout with operating handover",
+              "Support ownership, exception handling and reporting freshness are demonstrated"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "text": "A useful acceptance scenario submits the same request twice after a timeout and verifies that only one authoritative request exists. Another attempts to approve an outdated version and checks that the audit trail records the rejection without changing the approved state. A third pauses the worker, commits a valid approval and verifies that notification resumes after recovery. These checks test architectural promises rather than component installation."
+        },
+        {
+          "type": "h2",
+          "text": "09 / Executive insight"
+        },
+        {
+          "type": "p",
+          "text": "The recommended investment is an authoritative approval path and explainable reporting, delivered in small verifiable stages. The unresolved business decisions are data placement, retention, branch continuity policy and recovery objectives. No savings, fraud reduction, availability or throughput outcome can be claimed before a baseline and pilot exist. The architecture review produces an evidence-backed decision package; it does not replace institutional authority."
+        },
+        {
+          "type": "links",
+          "items": [
+            [
+              "PostgreSQL: transaction isolation",
+              "https://www.postgresql.org/docs/current/transaction-iso.html"
+            ],
+            [
+              "AWS Prescriptive Guidance: transactional outbox",
+              "https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/transactional-outbox.html"
+            ]
+          ]
+        }
+      ]
+    },
+    "fr": {
+      "title": "Des approbations fragmentées à une plateforme opérationnelle traçable",
+      "summary": "Une application de ZAF : état actuel, preuves manquantes, frontières, décisions et plan de vérification progressif.",
+      "blocks": [
+        {
+          "type": "note",
+          "text": "Étude d’architecture illustrative · Institution fictive · Aucun déploiement client, résultat mesuré ou soutien institutionnel n’est revendiqué. Les volumes, constats et objectifs sont des hypothèses."
+        },
+        {
+          "type": "h2",
+          "text": "Le besoin : rendre une décision approuvée traçable"
+        },
+        {
+          "type": "p",
+          "text": "Une institution fictive dispose d’un siège et de six antennes. Les demandes de dépenses circulent entre tableurs, emails et application existante. La finance rapproche des exports pour produire un rapport. Le besoin est de savoir quelle demande a été approuvée, par qui, sur quelle version et avec quelles données. Le premier choix porte sur l’autorité de la décision et non sur un fournisseur cloud."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Contrainte",
+            "Hypothèse de travail",
+            "Preuve à obtenir"
+          ],
+          "rows": [
+            [
+              "Échelle et équipe",
+              "120 utilisateurs, 20 simultanés, deux ingénieurs",
+              "Liste des accès, charge représentative et capacité de support"
+            ],
+            [
+              "Connectivité",
+              "Coupures de plusieurs heures possibles",
+              "Historique des incidents, équipements et alimentation"
+            ],
+            [
+              "Données",
+              "Contrôle institutionnel des données sensibles",
+              "Classification, hébergement autorisé et conservation"
+            ],
+            [
+              "Reprise",
+              "RPO envisagé : 24 h ; RTO : 4 h",
+              "Analyse d’impact et restauration chronométrée"
+            ],
+            [
+              "Reporting",
+              "Rapport quotidien à 09 h, heure d’Afrique centrale",
+              "Définitions et rapprochement validés par le responsable"
+            ]
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "01 / État actuel"
+        },
+        {
+          "type": "p",
+          "text": "Le parcours choisi est demande → revue du service → approbation financière → exécution → rapprochement. Dans ce scénario construit, les antennes attribuent des références différentes, les emails servent de preuve et les exports n’ont pas le même instant de référence. Un tableur corrigé peut remplacer la version effectivement approuvée. Ces constats ne décrivent aucune institution réelle."
+        },
+        {
+          "type": "h2",
+          "text": "02 / Évaluation"
+        },
+        {
+          "type": "p",
+          "text": "Une mission examinerait des demandes acceptées et refusées, testerait les droits et rapprocherait un rapport de ses transactions sources. Un entretien explique la pratique prévue ; les enregistrements et les tests permettent d’examiner la pratique réelle. La restauration doit être démontrée. Les inconnues restent explicites."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Responsable métier : confirmer le circuit et l’autorité des exceptions.",
+            "Finance : approuver les définitions, la période et les règles de rapprochement.",
+            "Responsable système : démontrer les accès, les versions et la reprise.",
+            "Responsable des données : valider classification, destinations et conservation."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "03 / Écarts prioritaires"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Priorité",
+            "Écart du scénario",
+            "Risque",
+            "Vérification"
+          ],
+          "rows": [
+            [
+              "P1",
+              "Version approuvée non identifiée",
+              "Exécution différente de l’autorisation",
+              "Modifier une demande puis rejouer son circuit"
+            ],
+            [
+              "P1",
+              "Restauration non démontrée",
+              "Reprise trop lente ou incomplète",
+              "Restaurer une copie isolée et rapprocher les données"
+            ],
+            [
+              "P2",
+              "Définitions et périodes incompatibles",
+              "Rapports non comparables",
+              "Vérifier une période connue"
+            ],
+            [
+              "P2",
+              "Reprises sans dédoublonnage",
+              "Création de demandes en double",
+              "Répéter une commande après délai dépassé"
+            ]
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "04 / Principes"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Un responsable et une source faisant autorité pour chaque fait métier.",
+            "Les autorisations et transitions sont vérifiées côté serveur.",
+            "L’approbation porte sur une version identifiée de la demande.",
+            "Une nouvelle tentative ne crée pas une deuxième opération métier.",
+            "La conservation et l’hébergement suivent une politique approuvée.",
+            "La complexité doit correspondre à la capacité réelle d’exploitation."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "05 / Architecture recommandée"
+        },
+        {
+          "type": "p",
+          "text": "Démarrer avec une application modulaire et une base relationnelle. Séparer les responsabilités de workflow, d’autorisation et de reporting tout en conservant une frontière transactionnelle cohérente. Ce choix répond à l’équipe et à la charge supposées ; il ne constitue pas une règle générale contre les microservices."
+        },
+        {
+          "type": "diagram",
+          "kind": "architecture"
+        },
+        {
+          "type": "p",
+          "text": "L’API authentifie la commande et vérifie droits et version attendue. Une transaction enregistre la transition, la trace d’audit et l’événement de boîte d’envoi. Un worker traite les notifications et les projections de reporting. L’échec d’un email n’annule pas une approbation déjà validée. Les consommateurs tolèrent les doublons ; la boîte d’envoi ne garantit pas à elle seule un traitement unique de bout en bout."
+        },
+        {
+          "type": "diagram",
+          "kind": "decision"
+        },
+        {
+          "type": "p",
+          "text": "Un historique auditable n’est pas automatiquement inviolable. Les privilèges administratifs, la conservation et la protection des sauvegardes doivent être conçus. Le stockage des pièces jointes, l’identité et les sauvegardes sont des frontières supplémentaires omises de ce schéma simplifié."
+        },
+        {
+          "type": "h2",
+          "text": "La connectivité impose une règle de cohérence"
+        },
+        {
+          "type": "p",
+          "text": "La première phase conserve un brouillon local clairement marqué comme non transmis. Aucune approbation ou exécution hors connexion n’est définitive. Au retour du réseau, le client utilise un identifiant stable de commande et une version attendue. Une version périmée impose une nouvelle revue. Une réponse perdue est rapprochée par l’identifiant de commande. Une approbation finale hors connexion exigerait une politique de conflit et de délégation explicite."
+        },
+        {
+          "type": "h2",
+          "text": "06 / Choix technologiques"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Capacité",
+            "Option envisagée",
+            "Obligation associée"
+          ],
+          "rows": [
+            [
+              "Workflow et API",
+              "Backend modulaire ; langage choisi avec les mainteneurs",
+              "Frontières métier, tests des droits et migrations"
+            ],
+            [
+              "État transactionnel",
+              "PostgreSQL",
+              "Contraintes, concurrence et restauration vérifiées"
+            ],
+            [
+              "Traitements différés",
+              "Boîte d’envoi et worker",
+              "Reprises, dédoublonnage et échecs visibles"
+            ],
+            [
+              "Pièces jointes",
+              "Stockage protégé sous contrôle institutionnel",
+              "Accès, limites, conservation et sauvegarde"
+            ],
+            [
+              "Déploiement",
+              "Conteneurs versionnés sur infrastructure autorisée",
+              "Correctifs, secrets, retour arrière et responsabilités"
+            ],
+            [
+              "Reporting",
+              "Projections et rapprochements versionnés",
+              "Période, couverture des sources et anomalies visibles"
+            ]
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "07 / Décisions et compromis"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Décision",
+            "Option écartée",
+            "Coût accepté",
+            "Condition de révision"
+          ],
+          "rows": [
+            [
+              "ADR-001 : application modulaire",
+              "Microservices indépendants",
+              "Cycle de livraison commun",
+              "Équipes distinctes ou besoin d’isolation mesuré"
+            ],
+            [
+              "ADR-002 : notifications différées",
+              "Envoi pendant la transaction",
+              "Délai et exploitation d’un worker",
+              "Exigence de livraison plus stricte démontrée"
+            ],
+            [
+              "ADR-003 : brouillons hors connexion",
+              "Approbation finale hors connexion",
+              "Validation impossible pendant la coupure",
+              "Politique de conflits et délégation approuvée"
+            ],
+            [
+              "ADR-004 : reporting quotidien",
+              "Analyse en streaming",
+              "Retard d’un cycle",
+              "Décision nécessitant des données plus fraîches"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Kafka, Kubernetes et un entrepôt séparé ne sont pas des exigences initiales dans cet exemple. Leur coût d’exploitation doit répondre à un besoin mesuré de débit, d’isolation, de livraison indépendante ou d’historisation."
+        },
+        {
+          "type": "h2",
+          "text": "08 / Vérification et progression"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Phase",
+            "Livrable",
+            "Preuve de sortie"
+          ],
+          "rows": [
+            [
+              "Découverte",
+              "Cartographie, échantillon et exigences",
+              "Définitions et responsables validés"
+            ],
+            [
+              "Conception",
+              "Schémas, modèle et décisions",
+              "Parcours normal, refusé et interrompu examinés"
+            ],
+            [
+              "Pilote",
+              "Une antenne et un type de demande",
+              "Droits, concurrence, reprises et rapprochements vérifiés"
+            ],
+            [
+              "Reprise",
+              "Exercice de restauration",
+              "Durée et complétude conformes aux objectifs approuvés"
+            ],
+            [
+              "Extension",
+              "Déploiement progressif et transfert",
+              "Support, exceptions et fraîcheur démontrés"
+            ]
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Trois scénarios vérifient les promesses : répéter une commande après un délai dépassé sans créer de doublon ; refuser une approbation sur une ancienne version ; arrêter le worker puis vérifier la reprise des notifications après une approbation valide. Ces scénarios vérifient le comportement plutôt que la seule présence des composants."
+        },
+        {
+          "type": "h2",
+          "text": "09 / Synthèse de décision"
+        },
+        {
+          "type": "p",
+          "text": "L’investissement proposé vise un circuit d’approbation faisant autorité et un reporting explicable. L’hébergement, la conservation, la continuité des antennes et les objectifs de reprise restent à arbitrer par l’institution. Aucune économie, réduction de fraude ou disponibilité n’est annoncée sans mesure initiale et pilote."
+        },
+        {
+          "type": "links",
+          "items": [
+            [
+              "PostgreSQL : isolation des transactions",
+              "https://www.postgresql.org/docs/current/transaction-iso.html"
+            ],
+            [
+              "AWS : modèle transactional outbox",
+              "https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/transactional-outbox.html"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "articles": [
+    {
+      "slug": "approval-integrity-under-retries",
+      "category": "System Design",
+      "cover": "DECISIONS THAT HOLD",
+      "en": {
+        "title": "An approval is a state transition, not a status field",
+        "summary": "Design permission checks, record versions and retries together so a timeout or concurrent edit cannot silently change what was approved.",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "A request shows “approved” in the interface. A notification was sent. Yet the operator cannot prove which amount the reviewer saw, whether the reviewer still had authority or whether a second submission created another request. A status column can describe an outcome without establishing that the decision was valid. Architecture work begins by identifying the invariant: the operation executed must correspond to the version and authority actually approved."
+          },
+          {
+            "type": "h2",
+            "text": "Write the invariant before the endpoint"
+          },
+          {
+            "type": "p",
+            "text": "Consider a fictional operational request with an amount, department, purpose and supporting documents. The approval applies to a specific version of that request. If the amount changes, the previous approval must not silently authorize the new value. A permission check must include organizational scope as well as role: an approver for one department must not approve another department’s request simply because both accounts have an “approver” label."
+          },
+          {
+            "type": "p",
+            "text": "Document the allowed transitions and the person authorized for each one. A correction after approval may create an amendment, require another approval or cancel the request. The institution must choose that policy. An engineer should not infer it from whichever update endpoint is easiest to implement."
+          },
+          {
+            "type": "table",
+            "headers": [
+              "Invariant",
+              "Where it is enforced",
+              "Evidence"
+            ],
+            "rows": [
+              [
+                "Only an authorized actor changes the state",
+                "Server-side policy using actor, organization and transition",
+                "Negative tests for other departments and revoked access"
+              ],
+              [
+                "Approval refers to the reviewed version",
+                "Expected-version condition in the transaction",
+                "Concurrent edit causes rejection"
+              ],
+              [
+                "A repeated command has one business result",
+                "Scoped command key and stored result",
+                "Retry after a lost response returns the recorded result"
+              ]
+            ]
+          },
+          {
+            "type": "h2",
+            "text": "Treat version and authority as transaction inputs"
+          },
+          {
+            "type": "p",
+            "text": "The client supplies the expected version and an idempotency key, while the server derives the actor from authenticated context. Within one transaction, recheck the authoritative state and any authorization data that must remain consistent with it. Apply the transition conditionally, record the audit event and save the command outcome. A unique constraint or suitable locking strategy must protect competing attempts; a preliminary “does this key exist?” query alone is vulnerable to a race."
+          },
+          {
+            "type": "code",
+            "text": "Command: approve(request_id, expected_version, command_key)\nTransaction:\n  authorize actor for this request and transition\n  claim command_key within actor/organization scope\n  require state = awaiting_approval and version = expected_version\n  record approved version, decision and audit entry\n  store command result; commit\nRetry: return stored result for the same payload\nConflict: reject changed payload or stale version"
+          },
+          {
+            "type": "p",
+            "text": "This is design pseudocode, not a complete implementation. Key scope, payload comparison, expiry, revocation and lock ordering require explicit decisions. PostgreSQL documents different isolation guarantees; using a transaction does not make every read–check–write sequence safe. Test the selected concurrency strategy with two competing sessions and retry the whole transaction when the chosen isolation level requires it."
+          },
+          {
+            "type": "h2",
+            "text": "Keep notification delivery outside the authority boundary"
+          },
+          {
+            "type": "p",
+            "text": "If approval is committed but email delivery fails, a request should not revert to an unapproved state simply to match the inbox. Record a notification intention in the same transaction as the decision, then let a worker deliver it. The transactional outbox pattern addresses this dual-write boundary. Delivery may repeat, so downstream handling must be idempotent. A successful send and a valid approval are different facts."
+          },
+          {
+            "type": "h2",
+            "text": "Plan the ambiguous timeout"
+          },
+          {
+            "type": "p",
+            "text": "An interrupted connection leaves the client uncertain, not necessarily the server. The command may have committed before the response disappeared. Repeating it with a new identifier discards the mechanism that could recognize the first attempt. Keep the original key, query its result and distinguish “not accepted,” “accepted,” and “outcome still unknown.” An offline draft is not an accepted request and should be labelled accordingly."
+          },
+          {
+            "type": "h2",
+            "text": "What to verify before calling it reliable"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Submit two approvals against the same expected version; verify only the permitted transition wins.",
+              "Lose the first response, repeat the same key and verify the original business result is returned.",
+              "Reuse a key with a different payload and verify rejection rather than accidental replay.",
+              "Change the record before approval and verify that the reviewer must inspect the new version.",
+              "Stop the notification worker, commit a decision and verify recoverable delivery after restart."
+            ]
+          },
+          {
+            "type": "p",
+            "text": "These tests expose a useful consulting boundary. The business owns the authority policy; the architecture translates it into state, concurrency and recovery rules; implementation must demonstrate those rules. If a system cannot explain that chain, adding another approval screen will not establish integrity."
+          },
+          {
+            "type": "links",
+            "items": [
+              [
+                "PostgreSQL: transaction isolation",
+                "https://www.postgresql.org/docs/current/transaction-iso.html"
+              ],
+              [
+                "AWS: transactional outbox pattern",
+                "https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/transactional-outbox.html"
+              ]
+            ]
+          }
+        ]
+      },
+      "fr": {
+        "title": "Une approbation est une transition d’état, pas un simple statut",
+        "summary": "Concevoir ensemble les droits, les versions et les reprises pour préserver ce qui a réellement été approuvé.",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "Une demande est marquée « approuvée » et un email a été envoyé. Pourtant, personne ne peut expliquer quelle version a été examinée, si l’acteur avait encore l’autorité nécessaire ou si une nouvelle tentative a créé un doublon. La valeur d’un champ ne suffit pas à établir la validité d’une décision."
+          },
+          {
+            "type": "h2",
+            "text": "Définir l’invariant métier"
+          },
+          {
+            "type": "p",
+            "text": "L’opération exécutée doit correspondre à la version effectivement autorisée. Une modification du montant ne doit pas hériter silencieusement de l’approbation précédente. Les droits dépendent du rôle mais aussi du périmètre : un responsable d’un service ne doit pas approuver les demandes d’un autre. L’institution doit décider si une correction entraîne un amendement, une nouvelle approbation ou une annulation."
+          },
+          {
+            "type": "h2",
+            "text": "Vérifier version et autorité dans la transaction"
+          },
+          {
+            "type": "p",
+            "text": "Le client transmet la version attendue et une clé stable de commande. L’identité vient du contexte authentifié côté serveur. Une transaction vérifie l’état faisant autorité, applique la transition conditionnelle, enregistre l’audit et conserve le résultat de la commande. Une contrainte d’unicité ou un verrouillage adapté protège les tentatives concurrentes ; une simple recherche préalable de la clé ne supprime pas la course."
+          },
+          {
+            "type": "code",
+            "text": "Commande : approuver(id_demande, version_attendue, clé)\nVérifier l’acteur, le périmètre et la transition\nProtéger la clé de commande contre la concurrence\nVérifier l’état et la version attendus\nEnregistrer décision, audit et résultat ; valider\nReprise identique : retourner le résultat enregistré"
+          },
+          {
+            "type": "p",
+            "text": "Ce pseudocode n’est pas une réalisation complète. Il faut définir le périmètre des clés, comparer les charges utiles, traiter leur expiration et choisir une stratégie de concurrence. Les niveaux d’isolation PostgreSQL n’offrent pas tous les mêmes garanties. Le comportement doit être testé avec deux sessions concurrentes."
+          },
+          {
+            "type": "h2",
+            "text": "Séparer décision et notification"
+          },
+          {
+            "type": "p",
+            "text": "L’échec d’un email ne doit pas annuler une décision déjà validée. La transaction peut enregistrer une intention de notification, traitée ensuite par un worker. Le modèle transactional outbox traite cette frontière de double écriture. Des livraisons répétées restent possibles : le consommateur doit les reconnaître. La validité de l’approbation et l’envoi de l’email sont deux faits différents."
+          },
+          {
+            "type": "h2",
+            "text": "Traiter une réponse perdue"
+          },
+          {
+            "type": "p",
+            "text": "Une coupure après validation peut laisser le client dans l’incertitude. Réutiliser la même clé permet de rapprocher la nouvelle tentative du résultat déjà enregistré. Une nouvelle clé risque de créer une nouvelle opération. L’interface doit distinguer brouillon non transmis, demande acceptée et résultat encore inconnu."
+          },
+          {
+            "type": "h2",
+            "text": "Les vérifications utiles"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Deux approbations concurrentes sur la même version n’exécutent pas deux transitions.",
+              "Une réponse perdue suivie d’une reprise conserve le résultat initial.",
+              "Une clé réutilisée avec un contenu différent est refusée.",
+              "Une demande modifiée impose une nouvelle revue de la version actuelle.",
+              "Un worker arrêté peut reprendre les notifications après redémarrage."
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Le métier définit l’autorité. L’architecture la traduit en règles d’état, de concurrence et de reprise. La réalisation doit démontrer ces règles. C’est cette continuité qui rend la décision défendable."
+          },
+          {
+            "type": "links",
+            "items": [
+              [
+                "PostgreSQL : isolation des transactions",
+                "https://www.postgresql.org/docs/current/transaction-iso.html"
+              ],
+              [
+                "AWS : transactional outbox",
+                "https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/transactional-outbox.html"
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "reporting-contract-before-dashboard",
+      "category": "Data Engineering",
+      "cover": "EXPLAIN THE NUMBER",
+      "en": {
+        "title": "Before building the dashboard, agree the reporting contract",
+        "summary": "A practical way to define metrics, source coverage, corrections and freshness so a report can be explained and reconciled.",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "Two dashboards show different totals for the same period. Both jobs completed successfully. The disagreement is not necessarily a broken query: one report may count submitted orders while another counts settled payments. Technical execution can be correct while the business interpretation remains incompatible. A reporting contract makes those differences explicit before the pipeline becomes harder to change."
+          },
+          {
+            "type": "h2",
+            "text": "A metric is a definition with an owner"
+          },
+          {
+            "type": "p",
+            "text": "Start with one decision the report supports. For a fictional operations team, the question might be how much approved expenditure remains unfulfilled. That requires definitions for approval, fulfilment, partial execution, cancellation and the reporting cut-off. The finance owner must decide the meaning. The engineering team records how source fields and transformations express it."
+          },
+          {
+            "type": "table",
+            "headers": [
+              "Contract field",
+              "Illustrative specification"
+            ],
+            "rows": [
+              [
+                "Metric",
+                "Approved expenditure not yet fulfilled"
+              ],
+              [
+                "Authority",
+                "Finance owner signs off the definition; system owner maintains the mapping"
+              ],
+              [
+                "Grain",
+                "One approved request version and its fulfilment entries"
+              ],
+              [
+                "Time",
+                "As of 18:00 Central Africa Time; period and business timestamp stated"
+              ],
+              [
+                "Coverage",
+                "Named source systems and included branches"
+              ],
+              [
+                "Corrections",
+                "Late fulfilment updates the affected period; published revisions remain identifiable"
+              ],
+              [
+                "Freshness",
+                "Show last successful source coverage, not only dashboard refresh time"
+              ],
+              [
+                "Exceptions",
+                "Missing references and invalid amounts appear in an assigned exception queue"
+              ]
+            ]
+          },
+          {
+            "type": "p",
+            "text": "This is a sample contract, not an accounting policy. Whether a cancellation changes a prior period, creates a current-period adjustment or is prohibited depends on the organization’s rules. That decision should not be buried in an SQL expression owned by nobody."
+          },
+          {
+            "type": "h2",
+            "text": "Keep event time, ingestion time and publication time distinct"
+          },
+          {
+            "type": "p",
+            "text": "A branch records fulfilment on Monday but reconnects on Wednesday. An ingestion timestamp cannot establish when the business action happened. Retain the business timestamp and enough source metadata to trace its origin. Record when the platform received the information and when a report was published. A report can then state whether it includes late arrivals and which revision it represents."
+          },
+          {
+            "type": "p",
+            "text": "Timezone and currency treatment are also part of the definition. Adding amounts in different currencies without an agreed conversion policy creates an apparently precise but meaningless total. Preserve source currency, conversion basis where applicable and the authority that approved the policy. Do not infer official rates or accounting treatment from a library default."
+          },
+          {
+            "type": "h2",
+            "text": "Reconciliation is a control with an explanation"
+          },
+          {
+            "type": "p",
+            "text": "Choose a known period and compare source coverage, counts, amounts, duplicates and exclusions. A simple equation can help: eligible source records = included records + identified exceptions, provided those sets are mutually exclusive and the rules define eligibility. An unexplained residual is an investigation item, not a number to round away."
+          },
+          {
+            "type": "code",
+            "text": "For one reporting cut-off:\n  list expected sources and arrival status\n  identify eligible records by the agreed definition\n  separate accepted records from assigned exceptions\n  compare counts and amounts at the same grain\n  publish coverage, cut-off, revision and unresolved exceptions"
+          },
+          {
+            "type": "p",
+            "text": "Preserving raw inputs is useful when permitted, but retention is not unlimited by default. Source identifiers, processing versions and access rules should be sufficient to investigate a result while respecting classification and deletion requirements. A database foreign key can enforce a reference; it cannot decide whether the referenced business fact means what finance intended."
+          },
+          {
+            "type": "h2",
+            "text": "Design correction and replay before the first incident"
+          },
+          {
+            "type": "p",
+            "text": "A repeated file should not double the total. A corrected record should not disappear behind a permanent deduplication rule. Define the business key, the version policy and whether transformations replace, append or supersede prior outputs. Replay a small known dataset twice, introduce a late correction, then compare the outputs with the expected contract."
+          },
+          {
+            "type": "p",
+            "text": "Keep rejected records visible with a reason and responsible owner. A pipeline that drops invalid rows and publishes “success” has transferred the problem to the report reader. Consider distinguishing complete, incomplete and withheld publications. The institution decides which exceptions permit publication and which block a critical report."
+          },
+          {
+            "type": "h2",
+            "text": "Publish operational meaning alongside the chart"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Metric definition and named owner.",
+              "Reporting period, cut-off and publication revision.",
+              "Expected sources, received sources and missing coverage.",
+              "Late-arrival and correction policy.",
+              "Unresolved exceptions and the route for investigation."
+            ]
+          },
+          {
+            "type": "p",
+            "text": "A first engagement can produce a source-to-report map, one agreed contract, a representative reconciliation and a prioritized remediation plan. A larger warehouse or streaming platform may follow when scale and analytical needs justify it. The immediate value is that a decision-maker can ask “where did this number come from?” and receive a reproducible answer."
+          },
+          {
+            "type": "links",
+            "items": [
+              [
+                "PostgreSQL: data definition constraints",
+                "https://www.postgresql.org/docs/current/ddl-constraints.html"
+              ]
+            ]
+          }
+        ]
+      },
+      "fr": {
+        "title": "Avant le tableau de bord, convenir du contrat de reporting",
+        "summary": "Définir les indicateurs, les sources, les corrections et la fraîcheur pour produire des chiffres explicables.",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "Deux rapports affichent des totaux différents alors que leurs traitements sont terminés sans erreur. L’un compte peut-être les demandes soumises et l’autre les paiements encaissés. La réussite technique n’établit pas une interprétation métier commune. Le contrat de reporting rend ces choix visibles."
+          },
+          {
+            "type": "h2",
+            "text": "Un indicateur a une définition et un responsable"
+          },
+          {
+            "type": "p",
+            "text": "Partir de la décision à prendre. Pour un exemple fictif de dépenses approuvées non exécutées, il faut définir l’approbation, l’exécution partielle, l’annulation et l’instant de référence. Le responsable financier valide le sens ; l’équipe technique documente les champs et transformations qui le représentent."
+          },
+          {
+            "type": "table",
+            "headers": [
+              "Élément",
+              "Exemple illustratif"
+            ],
+            "rows": [
+              [
+                "Indicateur",
+                "Dépenses approuvées non encore exécutées"
+              ],
+              [
+                "Granularité",
+                "Une version approuvée et ses écritures d’exécution"
+              ],
+              [
+                "Période",
+                "Situation à 18 h, heure d’Afrique centrale"
+              ],
+              [
+                "Couverture",
+                "Sources et antennes nommées"
+              ],
+              [
+                "Corrections",
+                "Révisions publiées identifiables"
+              ],
+              [
+                "Exceptions",
+                "Références manquantes et montants invalides attribués à un responsable"
+              ]
+            ]
+          },
+          {
+            "type": "h2",
+            "text": "Séparer les trois dates"
+          },
+          {
+            "type": "p",
+            "text": "Une antenne enregistre une opération lundi et se reconnecte mercredi. La date d’import ne remplace pas la date métier. Conserver l’instant de l’opération, celui de réception et celui de publication permet d’expliquer les données tardives. Le fuseau et le traitement des devises doivent être convenus. Additionner plusieurs devises sans règle approuvée ne produit pas un total exploitable."
+          },
+          {
+            "type": "h2",
+            "text": "Faire du rapprochement un contrôle explicable"
+          },
+          {
+            "type": "p",
+            "text": "Sur une période connue, comparer couverture, nombres, montants et exclusions à la même granularité. Si les ensembles sont exclusifs et l’éligibilité définie, les enregistrements éligibles doivent être répartis entre données incluses et exceptions identifiées. Tout écart inexpliqué appelle une investigation."
+          },
+          {
+            "type": "code",
+            "text": "À un instant de référence donné :\n  vérifier les sources attendues et reçues\n  appliquer les règles d’éligibilité convenues\n  séparer les données acceptées des exceptions\n  rapprocher les nombres et les montants\n  publier couverture, révision et écarts ouverts"
+          },
+          {
+            "type": "p",
+            "text": "Les références sources et versions de traitement doivent permettre d’expliquer le résultat, dans les limites de conservation et de confidentialité. Une contrainte de base de données peut vérifier une relation ; elle ne prouve pas la justesse de la définition métier."
+          },
+          {
+            "type": "h2",
+            "text": "Prévoir correction et reprise"
+          },
+          {
+            "type": "p",
+            "text": "Un fichier reçu deux fois ne doit pas doubler le total. Une correction ne doit pas être ignorée par une règle de dédoublonnage trop simple. Définir la clé métier et la politique de version ; rejouer un jeu connu ; introduire une correction tardive ; comparer le résultat attendu. Les rejets restent visibles avec un motif et un responsable."
+          },
+          {
+            "type": "h2",
+            "text": "Accompagner le chiffre de sa signification"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Définition et responsable de l’indicateur.",
+              "Période, instant de référence et révision.",
+              "Sources attendues, reçues et manquantes.",
+              "Politique de correction et de données tardives.",
+              "Exceptions ouvertes et procédure d’investigation."
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Une première mission peut fournir la carte source-rapport, un contrat validé, un rapprochement et un plan de correction priorisé. Une plateforme plus importante devient pertinente lorsque ses besoins sont démontrés. Le premier résultat recherché reste une réponse reproductible à la question : d’où vient ce chiffre ?"
+          },
+          {
+            "type": "links",
+            "items": [
+              [
+                "PostgreSQL : contraintes",
+                "https://www.postgresql.org/docs/current/ddl-constraints.html"
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "slug": "platform-readiness-before-orchestration",
+      "category": "Platform Engineering",
+      "cover": "OPERATE WHAT YOU BUILD",
+      "en": {
+        "title": "Platform readiness comes before orchestration",
+        "summary": "Evaluate release traceability, access, restoration and operating ownership before introducing more infrastructure components.",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "A platform can have containers, infrastructure code and a green pipeline while still depending on one engineer to recover a failed service. Installing an orchestrator does not decide who may deploy, how a database is restored or what a critical alert means. Platform readiness is the ability to make, observe and recover a change under the organization’s real constraints."
+          },
+          {
+            "type": "h2",
+            "text": "Assess the operating boundary"
+          },
+          {
+            "type": "p",
+            "text": "Begin with one service and follow a change from reviewed source to the running environment. Identify who approves the change, which artifact is deployed, where configuration comes from and how the team knows that the intended behaviour is working. Include dependencies outside the application: identity, network, certificates, secrets, storage, database migrations and the people authorized to act."
+          },
+          {
+            "type": "table",
+            "headers": [
+              "Question",
+              "Evidence to request",
+              "A misleading substitute"
+            ],
+            "rows": [
+              [
+                "What is running?",
+                "Source revision, artifact identifier and environment record",
+                "“Latest” image tag"
+              ],
+              [
+                "Who may change it?",
+                "Scoped deployment access and approval responsibility",
+                "A shared administrator password"
+              ],
+              [
+                "Can we recover?",
+                "Timed restore and compatibility verification",
+                "A backup job marked successful"
+              ],
+              [
+                "How will we notice harm?",
+                "User journey signal and an actionable response",
+                "A dashboard with only host CPU"
+              ],
+              [
+                "Who operates it?",
+                "Named owner, runbook and support expectations",
+                "The developer’s phone number alone"
+              ]
+            ]
+          },
+          {
+            "type": "h2",
+            "text": "Make releases traceable before making them numerous"
+          },
+          {
+            "type": "p",
+            "text": "A release record should connect source, checks, artifact, configuration and migration decisions. The required verification follows the risk: a permission change needs a forbidden-path test; a database migration needs compatibility checks; a workflow change needs a representative business journey. A failed required check is information to investigate, not an obstacle to hide."
+          },
+          {
+            "type": "p",
+            "text": "For small teams, a deliberately simple deployment process may be easier to reason about than many automation stages. The minimum is not a particular tool count. It is a repeatable path with identified inputs, meaningful verification and an accountable decision to proceed or stop."
+          },
+          {
+            "type": "h2",
+            "text": "A rollback plan is also a data plan"
+          },
+          {
+            "type": "p",
+            "text": "Restoring yesterday’s application image may fail against today’s schema. Reversing a destructive database migration may be impossible without restoring data, and restoring data can discard legitimate recent work. Classify the change before release: backward-compatible expansion, behaviour switch, destructive cleanup or a change requiring a maintenance window. Decide whether recovery means rollback, forward repair or restoration."
+          },
+          {
+            "type": "p",
+            "text": "Test restoration in an isolated environment with controlled access. Record the backup used, restoration duration, last recoverable transaction and reconciliation results. Recovery point and recovery time objectives are business commitments to agree and test, not numbers copied from a product brochure. Backups also need protection against accidental deletion and unauthorized access."
+          },
+          {
+            "type": "h2",
+            "text": "Observe the user outcome and the internal cause"
+          },
+          {
+            "type": "p",
+            "text": "An operational signal should connect to a user journey: request acceptance, approval completion or report freshness. Internal signals help explain why that journey fails. Google’s monitoring guidance distinguishes externally observed behaviour from internal instrumentation; the practical task is to choose a small set that supports an action. A queued job count without age or ownership may hide work that is never progressing."
+          },
+          {
+            "type": "p",
+            "text": "For the fictional approval platform, candidate signals include failed authenticated submissions, oldest unprocessed notification, age of the last complete report and errors during a representative transaction. Thresholds depend on agreed service objectives. Each interrupting alert needs a responsible person, a likely first action and a way to determine whether the incident is resolved."
+          },
+          {
+            "type": "h2",
+            "text": "Introduce orchestration when a specific constraint demands it"
+          },
+          {
+            "type": "p",
+            "text": "Consider more sophisticated orchestration when there is evidence of placement, isolation, scaling or independent delivery needs that the existing process cannot meet economically. Include its operating costs: upgrades, access policy, networking, persistent storage, observability and incident skills. “We plan to grow” is insufficient to choose the entire future infrastructure today."
+          },
+          {
+            "type": "list",
+            "items": [
+              "Establish one repeatable release and one demonstrated restore.",
+              "Document service ownership, access and response expectations.",
+              "Measure the current constraint and the cost of working around it.",
+              "Compare a simpler improvement with the proposed platform investment.",
+              "Pilot the new approach with explicit acceptance and exit criteria."
+            ]
+          },
+          {
+            "type": "p",
+            "text": "The first consulting deliverable can be a readiness assessment and a prioritized operating plan rather than a cluster installation. The result should explain what the team can safely deliver now, where the risk sits and which evidence would justify the next platform capability."
+          },
+          {
+            "type": "links",
+            "items": [
+              [
+                "Google SRE: monitoring distributed systems",
+                "https://sre.google/sre-book/monitoring-distributed-systems/"
+              ],
+              [
+                "Google SRE: release engineering",
+                "https://sre.google/sre-book/release-engineering/"
+              ]
+            ]
+          }
+        ]
+      },
+      "fr": {
+        "title": "La capacité d’exploitation précède l’orchestration",
+        "summary": "Examiner traçabilité, accès, restauration et responsabilités avant d’ajouter de nouveaux composants d’infrastructure.",
+        "blocks": [
+          {
+            "type": "p",
+            "text": "Une plateforme peut disposer de conteneurs et d’une pipeline verte tout en dépendant d’une seule personne pour se relever d’un incident. L’orchestrateur ne définit ni l’autorité de déploiement, ni la restauration de la base, ni la réponse à une alerte. La préparation opérationnelle consiste à modifier, observer et récupérer le service dans les contraintes réelles de l’organisation."
+          },
+          {
+            "type": "h2",
+            "text": "Suivre une modification jusqu’au service"
+          },
+          {
+            "type": "p",
+            "text": "Pour un service, relier la source revue à l’artefact déployé et à sa configuration. Identifier l’approbateur, les vérifications et les signes que le parcours utilisateur fonctionne. Inclure identité, réseau, certificats, secrets, migrations et personnes autorisées à intervenir."
+          },
+          {
+            "type": "table",
+            "headers": [
+              "Question",
+              "Preuve utile",
+              "Substitut trompeur"
+            ],
+            "rows": [
+              [
+                "Quelle version fonctionne ?",
+                "Révision, artefact et environnement",
+                "Étiquette « latest »"
+              ],
+              [
+                "Qui peut la modifier ?",
+                "Accès limités et responsabilité de validation",
+                "Mot de passe administrateur partagé"
+              ],
+              [
+                "Peut-on récupérer ?",
+                "Restauration chronométrée et vérifiée",
+                "Sauvegarde marquée réussie"
+              ],
+              [
+                "Comment détecter le problème ?",
+                "Signal du parcours utilisateur et action prévue",
+                "CPU seul"
+              ],
+              [
+                "Qui assure le service ?",
+                "Responsable, procédure et attentes de support",
+                "Numéro personnel du développeur"
+              ]
+            ]
+          },
+          {
+            "type": "h2",
+            "text": "Rendre les livraisons explicables"
+          },
+          {
+            "type": "p",
+            "text": "Le relevé de version relie source, contrôles, artefact, configuration et migrations. Les vérifications correspondent au risque : accès interdit pour une modification de droits, compatibilité pour une migration, parcours métier pour un workflow. Un contrôle obligatoire en échec doit être compris et corrigé."
+          },
+          {
+            "type": "h2",
+            "text": "Le retour arrière concerne aussi les données"
+          },
+          {
+            "type": "p",
+            "text": "L’ancienne application peut être incompatible avec le nouveau schéma. Restaurer une base peut perdre des opérations récentes légitimes. Avant la livraison, distinguer extension compatible, changement de comportement et nettoyage destructif. Déterminer si la réponse sera un retour arrière, une correction en avant ou une restauration."
+          },
+          {
+            "type": "p",
+            "text": "Tester une restauration isolée en mesurant durée, dernier état récupérable et complétude. Les objectifs RPO et RTO sont des décisions métier à convenir et à démontrer. La protection des sauvegardes contre la suppression et les accès non autorisés fait partie de la conception."
+          },
+          {
+            "type": "h2",
+            "text": "Observer le résultat et sa cause"
+          },
+          {
+            "type": "p",
+            "text": "Relier les signaux aux parcours : acceptation d’une demande, approbation ou fraîcheur d’un rapport. Les métriques internes permettent d’expliquer les échecs. Pour une plateforme d’approbation, examiner l’âge de la notification la plus ancienne, les soumissions en erreur et la dernière publication complète. Chaque alerte urgente a un responsable et une première action."
+          },
+          {
+            "type": "h2",
+            "text": "Justifier la complexité supplémentaire"
+          },
+          {
+            "type": "p",
+            "text": "Une orchestration plus élaborée devient pertinente face à des besoins mesurés de placement, d’isolation, de capacité ou de livraison indépendante. Inclure mises à jour, réseau, stockage, droits et compétences d’incident dans le coût. Une ambition de croissance ne suffit pas à dimensionner toute l’infrastructure future."
+          },
+          {
+            "type": "list",
+            "items": [
+              "Démontrer une livraison reproductible et une restauration.",
+              "Attribuer responsabilités, accès et attentes de support.",
+              "Mesurer la contrainte actuelle.",
+              "Comparer une amélioration simple à l’investissement proposé.",
+              "Piloter avec des critères d’acceptation et de sortie."
+            ]
+          },
+          {
+            "type": "p",
+            "text": "Le premier livrable peut être une évaluation de préparation et un plan opérationnel priorisé. Il doit expliquer les capacités actuelles, les risques et les preuves qui justifieraient l’étape suivante."
+          },
+          {
+            "type": "links",
+            "items": [
+              [
+                "Google SRE : supervision des systèmes distribués",
+                "https://sre.google/sre-book/monitoring-distributed-systems/"
+              ],
+              [
+                "Google SRE : ingénierie des versions",
+                "https://sre.google/sre-book/release-engineering/"
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
