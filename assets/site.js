@@ -1,43 +1,14 @@
-const menu=document.querySelector('.menu-toggle');
-menu?.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));document.querySelector('#main-nav').classList.toggle('open',open);});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu){menu.setAttribute('aria-expanded','false');document.querySelector('#main-nav').classList.remove('open');}});
-let selectedCategory='all';
+const menu=document.querySelector('.menu-toggle'),nav=document.querySelector('#main-nav');
+menu?.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')!=='true';menu.setAttribute('aria-expanded',String(open));nav.classList.toggle('open',open);});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&menu){menu.setAttribute('aria-expanded','false');nav.classList.remove('open');}});
 const normalize=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
-function filterArticles(){const query=normalize(document.querySelector('#article-search')?.value||'');let count=0;document.querySelectorAll('[data-category]').forEach(a=>{const show=(selectedCategory==='all'||a.dataset.category===selectedCategory)&&normalize(a.dataset.search).includes(query);a.hidden=!show;if(show)count++;});const status=document.querySelector('#result-count');if(status)status.textContent=`${count} article${count===1?'':'s'}`;const empty=document.querySelector('#no-results');if(empty)empty.hidden=count!==0;}
-document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{selectedCategory=b.dataset.filter;document.querySelectorAll('[data-filter]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));filterArticles();}));
-document.querySelector('#article-search')?.addEventListener('input',filterArticles);
-document.querySelector('#brief-form')?.addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.target);const fields=[['Entreprise / projet','company'],['Nom','name'],['Objectif','objective'],['Budget indicatif','budget'],['Calendrier','timeline'],['Public et contexte','details']];const content='BRIEF DE PROJET — ZAWATU\n\n'+fields.map(([label,key])=>`${label} : ${f.get(key)||'Non précisé'}`).join('\n\n')+'\n\nDocument généré sur votre appareil. Aucune demande n’a été transmise à Zawatu.\n';const blobUrl=URL.createObjectURL(new Blob([content],{type:'text/plain;charset=utf-8'}));const a=document.createElement('a');a.href=blobUrl;a.download='brief-zawatu.txt';a.click();setTimeout(()=>URL.revokeObjectURL(blobUrl),1000);document.querySelector('#brief-status').textContent='Brief téléchargé. Aucun envoi n’a été effectué.';});
-document.querySelector('.share-link')?.addEventListener('click',async()=>{const status=document.querySelector('.share-status');try{await navigator.clipboard.writeText(location.href);status.textContent=document.documentElement.lang==='en'?'Article link copied.':'Lien copié.';}catch{status.textContent=document.documentElement.lang==='en'?'Copy the address from your browser.':'Copiez le lien dans la barre d’adresse.';}});
-const appointmentForm=document.querySelector('#appointment-form');
-if(appointmentForm){
- const dateField=appointmentForm.querySelector('[name=date]');
- const now=new Date();dateField.min=[now.getFullYear(),String(now.getMonth()+1).padStart(2,'0'),String(now.getDate()).padStart(2,'0')].join('-');
- appointmentForm.querySelector('[name=timezone]').value=Intl.DateTimeFormat().resolvedOptions().timeZone||'';
- appointmentForm.addEventListener('submit',e=>{
-  e.preventDefault();const data=new FormData(appointmentForm);
-  const body=['CONSULTATION REQUEST — ZAWATU','Name: '+data.get('name'),'Email: '+data.get('email'),'Preferred date: '+data.get('date'),'Preferred time: '+data.get('time'),'Time zone: '+data.get('timezone'),'Objective: '+data.get('details'),'','This is a request. Availability, fee and terms require confirmation.'].join('\n\n');
-  const address=appointmentForm.dataset.email;
-  location.href='mailto:'+encodeURIComponent(address)+'?subject='+encodeURIComponent('Consultation request — Zawatu')+'&body='+encodeURIComponent(body);
-  document.querySelector('#appointment-status').textContent='Email draft prepared. Review and send it in your email app; no appointment has been confirmed.';
- });
-}
-if(document.documentElement.lang==='en'){
- document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{const count=[...document.querySelectorAll('[data-category]')].filter(a=>!a.hidden).length;document.querySelector('#result-count').textContent=count+' article'+(count===1?'':'s');}));
- document.querySelector('#article-search')?.addEventListener('input',()=>{const count=[...document.querySelectorAll('[data-category]')].filter(a=>!a.hidden).length;document.querySelector('#result-count').textContent=count+' article'+(count===1?'':'s');});
-}
-
-// Inquiry preparation only: no backend submission or appointment confirmation.
-document.querySelectorAll('.consultation-inquiry').forEach(form=>{
- form.addEventListener('submit',event=>{
-  event.preventDefault();
-  const data=new FormData(form),business=form.dataset.kind==='business';
-  const subject=business?'Business consultation request — Zawatu':'Technical consulting inquiry — Elvis';
-  const lines=[subject,'Name: '+data.get('name'),'Email: '+data.get('email'),'Business / project: '+data.get('company')];
-  if(business)lines.push('Selected fee: '+(data.get('currency')==='USD'?'US$35':'100,000 BIF'),'Format: 45 minutes via Google Meet');
-  else lines.push('Area: '+data.get('area'),'Engagement: '+data.get('engagement'),'Indicative budget: '+(data.get('budget')||'To be discussed'),'Fee: please provide a scoped quotation');
-  lines.push('Challenge: '+data.get('details'),'Desired outcome / timeline: '+data.get('outcome'),'Please confirm scope, payment instructions and applicable cancellation, rescheduling and refund terms before payment.');
-  const status=form.querySelector('.inquiry-status');
-  status.textContent='Your email app should open with a draft. Review and send it there. This website has not submitted your inquiry or reserved an appointment.';
-  window.location.href='mailto:'+form.dataset.email+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(lines.join('\n\n'));
- });
-});
+document.querySelector('#article-search')?.addEventListener('input',event=>{const query=normalize(event.target.value);let count=0;document.querySelectorAll('[data-search]').forEach(card=>{card.hidden=!normalize(card.dataset.search).includes(query);if(!card.hidden)count++;});document.querySelector('#result-count').textContent=`${count} article${count===1?'':'s'}`;document.querySelector('#no-results').hidden=count!==0;});
+// Enquiries remain drafts on the visitor's device until sent in their email app.
+document.querySelectorAll('.consultation-inquiry').forEach(form=>form.addEventListener('submit',event=>{
+ event.preventDefault();const data=new FormData(form),fr=document.documentElement.lang==='fr';
+ const subject=fr?'Demande de conseil en architecture — Zawatu':'Architecture consulting enquiry — Zawatu';
+ const fields=fr?[['Nom','name'],['Email','email'],['Organisation / projet','company'],['Domaine','area'],['Contexte et problème','details'],['Résultat et calendrier','outcome'],['Mission','engagement'],['Budget indicatif','budget']]:[['Name','name'],['Email','email'],['Organization / project','company'],['Area','area'],['Current environment and challenge','details'],['Outcome and timeline','outcome'],['Engagement','engagement'],['Indicative budget','budget']];
+ const lines=[subject,...fields.map(([label,key])=>`${label}: ${data.get(key)|| (fr?'À discuter':'To be discussed')}`),fr?'Merci de confirmer le périmètre, les livrables, le calendrier, les honoraires et les conditions avant tout engagement.':'Please confirm scope, deliverables, timing, fees and terms before any engagement.'];
+ form.querySelector('.inquiry-status').textContent=fr?'Brouillon préparé. Vérifiez et envoyez votre email dans votre messagerie. Aucune demande n’a été transmise par ce site.':'Draft prepared. Review and send it in your email app. This website has not submitted your enquiry.';
+ window.location.href='mailto:'+form.dataset.email+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(lines.join('\n\n'));
+}));

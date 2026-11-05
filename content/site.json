@@ -8,15 +8,8 @@
   },
   "publisher": "",
   "address": "Bancobu Ikirezi, new building, 5th floor, Burundi",
-  "booking_url": "",
-  "consultation_duration": 45,
-  "consultation_fee": "",
-  "consultation_currency": "",
   "technical_email": "elvis@zawatu.com",
-  "consultation_prices": {
-    "BIF": 100000,
-    "USD": 35
-  },
-  "consultation_payment_mode": "manual_before_scheduling",
-  "technical_linkedin": "https://www.linkedin.com/in/ndayishimiye-elvis-821bb7207/"
+  "technical_linkedin": "https://www.linkedin.com/in/ndayishimiye-elvis-821bb7207/",
+  "positioning": "Systems architecture, data platforms and engineering consulting",
+  "framework": "ZAF — Zawatu Architecture Framework"
 }
