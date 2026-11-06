@@ -33,3 +33,11 @@ Existing confirmed consultation terms remain on `/consultation/#booking-policy`.
 `/zaf/` and `/fr/zaf/` now introduce a 15-chapter public reference dossier rather than a nine-step card grid. Each chapter has numbered subsections, an in-page contents list, chapter navigation, decision tables and acceptance criteria. Ten native SVG figures per language document the conceptual city, capabilities, domains, target, data lineage, integration, trust boundaries, deployment, governance and transition. Their captions distinguish logical roles from proven infrastructure.
 
 Content is maintained in `content/zaf_dossier.json`, rendered by `scripts/zaf_dossier.py`. `/zaf/documentation/complete/` provides continuous reading and browser-print styles; no PDF or page-perfect PDF export is claimed. The original worked-case URL remains a summary with a link to the dossier. All institutional findings and recommendations in the public example are fictional. Client blueprint content is not reproduced.
+
+## Eight-book ZAF library (0.2.0)
+
+`/zaf/` is now the living library of eight books. `content/zaf_library.json` records the catalogue, statuses, stable section IDs and Book I / Section 01 draft. `scripts/zaf_library.py` renders the catalogue, book contents, first section, editorial governance and release history.
+
+Book II preserves the founder-defined fifteen sections. Other outlines are explicitly proposed. Only Book I / Section 01 has drafted standards-library body text; no book is presented as accepted. Planned headings are not applicable rules. The previous fifteen-chapter illustrative dossier remains at `/zaf/reference-study/` with its original chapter URLs intact.
+
+Publication is distinct from acceptance. Draft -> review -> accepted -> deprecated/withdrawn is an editorial process, not an automated approval system. External references are bibliographic pointers, with no claim of accreditation or clause-level conformance. Work proceeds one section and one book at a time.

@@ -3,6 +3,7 @@ import html,json,os,shutil
 from pathlib import Path
 from xml.sax.saxutils import escape
 from zaf_dossier import publish as publish_zaf
+from zaf_library import publish as publish_zaf_library
 from practice_content import case_teaser, journal_cards, profile_evidence, publish_deep_pages, D as PRACTICE
 R=Path(__file__).resolve().parents[1]; O=R/'dist'; S=json.loads((R/'content/site.json').read_text()); BASE=os.getenv('SITE_BASE_PATH','').rstrip('/'); HOST=os.getenv('SITE_URL',S['url']).rstrip('/')
 ART=[a for a in json.loads((R/'content/articles_en.json').read_text()) if a.get('track')=='engineering']
@@ -62,6 +63,7 @@ def build():
    if s[0]=='data-engineering':body+=section('<h2>'+('Préparer les données pour l’IA.' if fr else 'Prepare the foundations for AI.')+'</h2><p>'+('Clarifier la qualité, les droits, la provenance et la disponibilité des données avant de proposer un usage de l’IA. Définir des critères d’évaluation et une supervision humaine adaptés au risque.' if fr else 'Assess data quality, access, provenance and availability before proposing an AI use case. Define evaluation criteria and human oversight appropriate to the risk.')+'</p>','soft')
    page('services/'+s[0]+'/',title,desc,body+cta())
   publish_zaf(lang,page,hero,section,link,cta)
+  publish_zaf_library(lang,page,hero,section,link,cta)
   methods='<ol class="architecture-method">'+''.join(f'<li><h2>{name}</h2><p>{desc}</p></li>' for name,desc in t['steps'])+'</ol>'
   page('approach/',t['nav'][2],t['approach'],hero(t['nav'][2],t['approach'],t['reviewnote'])+section(methods)+cta())
   profile=section(f'<div class="profile-section"><div class="profile-mark">EN<span>{t["profileintro"]}</span></div><div><h2>{t["profile"]}</h2><p>{t["profilebody"]}</p><p>{t["profilenote"]}</p><a class="text-link" href="{S["technical_linkedin"]}" rel="noopener noreferrer">LinkedIn ↗</a><p><a href="mailto:{S["technical_email"]}">{S["technical_email"]}</a></p></div></div>')+section(profile_evidence(lang,link))

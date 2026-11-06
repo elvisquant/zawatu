@@ -115,12 +115,12 @@ def render_markdown(text,lang,chapter,anchor_prefix=''):
 
 def chapter_nav(lang,link,active=0):
  fr=lang=='fr'
- return '<aside class="dossier-sidebar"><nav class="dossier-toc" aria-label="'+('Chapitres ZAF' if fr else 'ZAF chapters')+'">'+link('zaf/',('Sommaire du dossier' if fr else 'Dossier contents'),'dossier-home')+'<ol>'+''.join('<li>'+link('zaf/documentation/'+c['slug']+'/',f'<span>{c["number"]:02d}</span> {e(c[lang]["title"])}','is-current' if c['number']==active else '')+'</li>' for c in D['chapters'])+'</ol></nav></aside>'
+ return '<aside class="dossier-sidebar"><nav class="dossier-toc" aria-label="'+('Chapitres ZAF' if fr else 'ZAF chapters')+'">'+link('zaf/reference-study/',('Sommaire du dossier' if fr else 'Dossier contents'),'dossier-home')+'<ol>'+''.join('<li>'+link('zaf/documentation/'+c['slug']+'/',f'<span>{c["number"]:02d}</span> {e(c[lang]["title"])}','is-current' if c['number']==active else '')+'</li>' for c in D['chapters'])+'</ol></nav></aside>'
 
 def publish(lang,page,hero,section,link,cta):
  fr=lang=='fr';title='Zawatu Architecture Framework'
  intro=('Un dossier d’architecture organisé en chapitres : contexte, évaluation, preuves, conception, responsabilités et décisions exécutives.' if fr else 'A chapter-based architecture dossier: context, assessment, evidence, design, responsibility and executive decisions.')
- scope=('Édition publique de référence 1.0 · 5 novembre 2026 · Exemple institutionnel fictif. Aucun résultat client ou déploiement n’est revendiqué.' if fr else 'Public reference edition 1.0 · 5 November 2026 · Fictional institutional example. No client outcome or deployment is claimed.')
+ scope=('Étude de référence complémentaire · Édition publique de référence 1.0 · 5 novembre 2026 · Exemple institutionnel fictif. Aucun résultat client ou déploiement n’est revendiqué.' if fr else 'Supporting reference study · Public reference edition 1.0 · 5 November 2026 · Fictional institutional example. No client outcome or deployment is claimed.')
  reading=('<h2>Un document de travail pour décider et réaliser.</h2><p>Lire dans l’ordre pour suivre le raisonnement, ou ouvrir un chapitre selon la décision à préparer. Chaque chapitre contient analyse, recommandations, pièces attendues et conditions de validation.</p>' if fr else '<h2>A working document for decisions and delivery.</h2><p>Read in sequence to follow the reasoning, or open a chapter for the decision you need to prepare. Chapters contain analysis, recommendations, expected artifacts and acceptance conditions.</p>')
  index='<div class="dossier-introduction">'+reading+'<p class="method-note">'+scope+'</p><div class="dossier-actions">'+link('zaf/documentation/'+D['chapters'][0]['slug']+'/',('Commencer le chapitre 01 ↗' if fr else 'Start chapter 01 ↗'),'solid')+link('zaf/documentation/complete/',('Lecture continue / impression ↗' if fr else 'Continuous reading / print ↗'),'text-link')+'</div></div>'
  index+='<ol class="chapter-index">'
@@ -129,14 +129,14 @@ def publish(lang,page,hero,section,link,cta):
   desc=' · '.join(re.sub(r'^\d+\.\d+\s*','',x) for x in subheads[:3])
   index+='<li>'+link('zaf/documentation/'+c['slug']+'/',f'<span class="chapter-index-number">{c["number"]:02d}</span><span><h2>{e(c[lang]["title"])}</h2><p>{e(desc)}</p></span><span class="chapter-arrow" aria-hidden="true">↗</span>')+'</li>'
  index+='</ol>'
- page('zaf/',title,intro,hero('ZAF / '+('DOSSIER D’ARCHITECTURE' if fr else 'ARCHITECTURE DOSSIER'),title,intro)+section(index,'dossier-index')+section('<h2>'+('Méthode et application' if fr else 'Method and application')+'</h2><p>'+('Le dossier documente la démarche. La synthèse du cas permet de suivre son application à un parcours précis. Les documents propres aux clients restent distincts de cette publication.' if fr else 'The dossier documents the method. The worked-case summary follows its application to one journey. Client-specific material remains separate from this public edition.')+'</p>'+link('zaf/case-study/',('Lire la synthèse du cas ↗' if fr else 'Read the worked-case summary ↗'),'text-link'),'soft'))
+ page('zaf/reference-study/',title,intro,hero('ZAF / '+('DOSSIER D’ARCHITECTURE' if fr else 'ARCHITECTURE DOSSIER'),title,intro)+section(index,'dossier-index')+section('<h2>'+('Méthode et application' if fr else 'Method and application')+'</h2><p>'+('Le dossier documente la démarche. La synthèse du cas permet de suivre son application à un parcours précis. Les documents propres aux clients restent distincts de cette publication.' if fr else 'The dossier documents the method. The worked-case summary follows its application to one journey. Client-specific material remains separate from this public edition.')+'</p>'+link('zaf/case-study/',('Lire la synthèse du cas ↗' if fr else 'Read the worked-case summary ↗'),'text-link'),'soft'))
  all_content=[]
  for c in D['chapters']:
   n=c['number'];x=c[lang];subheads=re.findall(r'^## (.+)$',x['body'],re.M)
   contents='<details class="chapter-contents" open><summary>'+('Dans ce chapitre' if fr else 'In this chapter')+'</summary><ol>'+''.join('<li><a href="#section-'+re.match(r'(\d+\.\d+)',s).group(1).replace('.','-')+'">'+e(s)+'</a></li>' for s in subheads)+'</ol></details>'
   foot='<nav class="chapter-pagination" aria-label="'+('Navigation des chapitres' if fr else 'Chapter navigation')+'">'
   if n>1:foot+=link('zaf/documentation/'+D['chapters'][n-2]['slug']+'/',('← Chapitre précédent' if fr else '← Previous chapter'),'text-link')
-  foot+=link('zaf/',('Sommaire' if fr else 'Contents'),'text-link')
+  foot+=link('zaf/reference-study/',('Sommaire' if fr else 'Contents'),'text-link')
   if n<len(D['chapters']):foot+=link('zaf/documentation/'+D['chapters'][n]['slug']+'/',('Chapitre suivant →' if fr else 'Next chapter →'),'text-link')
   foot+='</nav>'
   body=hero(f'ZAF / '+('CHAPITRE' if fr else 'CHAPTER')+f' {n:02d} / 15',e(x['title']),scope).replace('page-hero wrap','page-hero wrap dossier-chapter-hero')

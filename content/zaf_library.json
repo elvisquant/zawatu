@@ -1,0 +1,1197 @@
+{
+  "version": "0.2.0",
+  "date": "2026-11-06",
+  "owner": "Elvis Ndayishimiye",
+  "publisher": "Zawatu",
+  "activeBook": "I",
+  "books": [
+    {
+      "roman": "I",
+      "slug": "book-i",
+      "title": {
+        "en": "Institutional Architecture",
+        "fr": "Architecture institutionnelle"
+      },
+      "summary": {
+        "en": "Purpose, mandate, capabilities, institutional ownership and transformation decisions.",
+        "fr": "Finalité, mandat, capacités, responsabilités institutionnelles et décisions de transformation."
+      },
+      "status": "draft",
+      "structure": "proposed",
+      "sections": [
+        {
+          "number": 1,
+          "id": "ZAF-I-01",
+          "slug": "institutional-vision",
+          "title": {
+            "en": "Institutional Vision & Architecture Mandate",
+            "fr": "Vision institutionnelle et mandat d’architecture"
+          },
+          "status": "draft"
+        },
+        {
+          "number": 2,
+          "id": "ZAF-I-02",
+          "slug": "section-02",
+          "title": {
+            "en": "Institutional Context & Stakeholder Concerns",
+            "fr": "Contexte institutionnel et préoccupations des acteurs"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 3,
+          "id": "ZAF-I-03",
+          "slug": "section-03",
+          "title": {
+            "en": "Institutional Purpose, Value & Public Outcomes",
+            "fr": "Finalité, valeur et résultats institutionnels"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 4,
+          "id": "ZAF-I-04",
+          "slug": "section-04",
+          "title": {
+            "en": "Business Capabilities & Value Streams",
+            "fr": "Capacités métier et chaînes de valeur"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 5,
+          "id": "ZAF-I-05",
+          "slug": "section-05",
+          "title": {
+            "en": "Institutional Operating Model",
+            "fr": "Modèle de fonctionnement institutionnel"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 6,
+          "id": "ZAF-I-06",
+          "slug": "section-06",
+          "title": {
+            "en": "Business Domains & Institutional Ownership",
+            "fr": "Domaines métier et responsabilités institutionnelles"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 7,
+          "id": "ZAF-I-07",
+          "slug": "section-07",
+          "title": {
+            "en": "Institutional Services & User Journeys",
+            "fr": "Services institutionnels et parcours utilisateurs"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 8,
+          "id": "ZAF-I-08",
+          "slug": "section-08",
+          "title": {
+            "en": "Information Ownership & Data Governance",
+            "fr": "Propriété de l’information et gouvernance des données"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 9,
+          "id": "ZAF-I-09",
+          "slug": "section-09",
+          "title": {
+            "en": "Interoperability & Ecosystem Architecture",
+            "fr": "Interopérabilité et architecture d’écosystème"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 10,
+          "id": "ZAF-I-10",
+          "slug": "section-10",
+          "title": {
+            "en": "Institutional Trust & Digital Sovereignty",
+            "fr": "Confiance institutionnelle et souveraineté numérique"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 11,
+          "id": "ZAF-I-11",
+          "slug": "section-11",
+          "title": {
+            "en": "Risk, Continuity & Institutional Resilience",
+            "fr": "Risques, continuité et résilience institutionnelle"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 12,
+          "id": "ZAF-I-12",
+          "slug": "section-12",
+          "title": {
+            "en": "Institutional Architecture Governance",
+            "fr": "Gouvernance de l’architecture institutionnelle"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 13,
+          "id": "ZAF-I-13",
+          "slug": "section-13",
+          "title": {
+            "en": "Target Institutional Architecture & Principles",
+            "fr": "Architecture institutionnelle cible et principes"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 14,
+          "id": "ZAF-I-14",
+          "slug": "section-14",
+          "title": {
+            "en": "Transformation Portfolio & Transition Roadmap",
+            "fr": "Portefeuille de transformation et trajectoire"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 15,
+          "id": "ZAF-I-15",
+          "slug": "section-15",
+          "title": {
+            "en": "Institutional Architecture Charter & Executive Decisions",
+            "fr": "Charte d’architecture institutionnelle et décisions exécutives"
+          },
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "roman": "II",
+      "slug": "book-ii",
+      "title": {
+        "en": "Engineering Architecture",
+        "fr": "Architecture d’ingénierie"
+      },
+      "summary": {
+        "en": "Translate institutional decisions into reference architectures, platforms and engineering responsibilities.",
+        "fr": "Traduire les décisions institutionnelles en architectures de référence, plateformes et responsabilités d’ingénierie."
+      },
+      "status": "planned",
+      "structure": "owner-defined",
+      "sections": [
+        {
+          "number": 1,
+          "id": "ZAF-II-01",
+          "slug": "section-01",
+          "title": {
+            "en": "Enterprise Engineering Vision",
+            "fr": "Vision de l’ingénierie d’entreprise"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 2,
+          "id": "ZAF-II-02",
+          "slug": "section-02",
+          "title": {
+            "en": "Enterprise Reference Architecture",
+            "fr": "Architecture de référence d’entreprise"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 3,
+          "id": "ZAF-II-03",
+          "slug": "section-03",
+          "title": {
+            "en": "Enterprise Technology Standards",
+            "fr": "Standards technologiques d’entreprise"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 4,
+          "id": "ZAF-II-04",
+          "slug": "section-04",
+          "title": {
+            "en": "Enterprise Platform Catalog",
+            "fr": "Catalogue des plateformes d’entreprise"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 5,
+          "id": "ZAF-II-05",
+          "slug": "section-05",
+          "title": {
+            "en": "Enterprise Development Architecture",
+            "fr": "Architecture de développement d’entreprise"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 6,
+          "id": "ZAF-II-06",
+          "slug": "section-06",
+          "title": {
+            "en": "Enterprise Infrastructure & Deployment Architecture",
+            "fr": "Architecture d’infrastructure et de déploiement"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 7,
+          "id": "ZAF-II-07",
+          "slug": "section-07",
+          "title": {
+            "en": "Enterprise Network Architecture",
+            "fr": "Architecture réseau d’entreprise"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 8,
+          "id": "ZAF-II-08",
+          "slug": "section-08",
+          "title": {
+            "en": "Enterprise Kubernetes Platform Architectures",
+            "fr": "Architectures de plateforme Kubernetes d’entreprise"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 9,
+          "id": "ZAF-II-09",
+          "slug": "section-09",
+          "title": {
+            "en": "Enterprise Data Architecture",
+            "fr": "Architecture des données d’entreprise"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 10,
+          "id": "ZAF-II-10",
+          "slug": "section-10",
+          "title": {
+            "en": "Enterprise Security Technology Architecture",
+            "fr": "Architecture technologique de sécurité"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 11,
+          "id": "ZAF-II-11",
+          "slug": "section-11",
+          "title": {
+            "en": "Enterprise DevSecOps Architecture",
+            "fr": "Architecture DevSecOps d’entreprise"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 12,
+          "id": "ZAF-II-12",
+          "slug": "section-12",
+          "title": {
+            "en": "Enterprise Operations Technology Architecture",
+            "fr": "Architecture technologique des opérations"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 13,
+          "id": "ZAF-II-13",
+          "slug": "section-13",
+          "title": {
+            "en": "Enterprise Technology Lifecycle Architecture",
+            "fr": "Architecture du cycle de vie technologique"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 14,
+          "id": "ZAF-II-14",
+          "slug": "section-14",
+          "title": {
+            "en": "Enterprise Technology Governance & Architecture Decision Management",
+            "fr": "Gouvernance technologique et gestion des décisions d’architecture"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 15,
+          "id": "ZAF-II-15",
+          "slug": "section-15",
+          "title": {
+            "en": "Enterprise Engineering Constitution",
+            "fr": "Constitution de l’ingénierie d’entreprise"
+          },
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "roman": "III",
+      "slug": "book-iii",
+      "title": {
+        "en": "Engineering Standards",
+        "fr": "Standards d’ingénierie"
+      },
+      "summary": {
+        "en": "Testable engineering rules, evidence requirements and exception procedures.",
+        "fr": "Règles vérifiables, preuves attendues et procédures d’exception."
+      },
+      "status": "planned",
+      "structure": "proposed",
+      "sections": [
+        {
+          "number": 1,
+          "id": "ZAF-III-01",
+          "slug": "section-01",
+          "title": {
+            "en": "Enterprise Coding Standards",
+            "fr": "Standards de code d’entreprise"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 2,
+          "id": "ZAF-III-02",
+          "slug": "section-02",
+          "title": {
+            "en": "Domain Modelling & Module Boundaries",
+            "fr": "Modélisation métier et frontières des modules"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 3,
+          "id": "ZAF-III-03",
+          "slug": "section-03",
+          "title": {
+            "en": "API & Contract Standards",
+            "fr": "Standards API et contrats"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 4,
+          "id": "ZAF-III-04",
+          "slug": "section-04",
+          "title": {
+            "en": "Data Modelling & Migration Standards",
+            "fr": "Standards de données et migrations"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 5,
+          "id": "ZAF-III-05",
+          "slug": "section-05",
+          "title": {
+            "en": "Event & Messaging Standards",
+            "fr": "Standards événementiels et messagerie"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 6,
+          "id": "ZAF-III-06",
+          "slug": "section-06",
+          "title": {
+            "en": "Testing & Verification Standards",
+            "fr": "Standards de tests et vérification"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 7,
+          "id": "ZAF-III-07",
+          "slug": "section-07",
+          "title": {
+            "en": "Source Control & Review Standards",
+            "fr": "Standards de gestion du code et revue"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 8,
+          "id": "ZAF-III-08",
+          "slug": "section-08",
+          "title": {
+            "en": "Build & Artifact Standards",
+            "fr": "Standards de build et artefacts"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 9,
+          "id": "ZAF-III-09",
+          "slug": "section-09",
+          "title": {
+            "en": "Configuration & Secrets Standards",
+            "fr": "Standards de configuration et secrets"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 10,
+          "id": "ZAF-III-10",
+          "slug": "section-10",
+          "title": {
+            "en": "Infrastructure & Container Standards",
+            "fr": "Standards d’infrastructure et conteneurs"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 11,
+          "id": "ZAF-III-11",
+          "slug": "section-11",
+          "title": {
+            "en": "Security Engineering Standards",
+            "fr": "Standards d’ingénierie de sécurité"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 12,
+          "id": "ZAF-III-12",
+          "slug": "section-12",
+          "title": {
+            "en": "Observability & Reliability Standards",
+            "fr": "Standards d’observabilité et fiabilité"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 13,
+          "id": "ZAF-III-13",
+          "slug": "section-13",
+          "title": {
+            "en": "Documentation & Decision Records",
+            "fr": "Documentation et décisions"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 14,
+          "id": "ZAF-III-14",
+          "slug": "section-14",
+          "title": {
+            "en": "Release, Compatibility & Lifecycle Rules",
+            "fr": "Règles de livraison, compatibilité et cycle de vie"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 15,
+          "id": "ZAF-III-15",
+          "slug": "section-15",
+          "title": {
+            "en": "Verification Evidence & Exceptions",
+            "fr": "Preuves de vérification et exceptions"
+          },
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "roman": "IV",
+      "slug": "book-iv",
+      "title": {
+        "en": "Platform Implementation Guides",
+        "fr": "Guides de réalisation des plateformes"
+      },
+      "summary": {
+        "en": "Repeatable, version-specific implementation guides with validation and recovery steps.",
+        "fr": "Guides de réalisation reproductibles et versionnés, avec validation et reprise."
+      },
+      "status": "planned",
+      "structure": "proposed",
+      "sections": [
+        {
+          "number": 1,
+          "id": "ZAF-IV-01",
+          "slug": "section-01",
+          "title": {
+            "en": "Implementation Guide Contract & Prerequisites",
+            "fr": "Contrat du guide et prérequis"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 2,
+          "id": "ZAF-IV-02",
+          "slug": "section-02",
+          "title": {
+            "en": "Identity & Access Platform",
+            "fr": "Plateforme d’identité et accès"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 3,
+          "id": "ZAF-IV-03",
+          "slug": "section-03",
+          "title": {
+            "en": "Network, DNS & Certificates",
+            "fr": "Réseau, DNS et certificats"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 4,
+          "id": "ZAF-IV-04",
+          "slug": "section-04",
+          "title": {
+            "en": "Compute & Container Runtime",
+            "fr": "Calcul et exécution des conteneurs"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 5,
+          "id": "ZAF-IV-05",
+          "slug": "section-05",
+          "title": {
+            "en": "Kubernetes Platform Implementation",
+            "fr": "Réalisation de la plateforme Kubernetes"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 6,
+          "id": "ZAF-IV-06",
+          "slug": "section-06",
+          "title": {
+            "en": "Transactional Data Platform",
+            "fr": "Plateforme de données transactionnelles"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 7,
+          "id": "ZAF-IV-07",
+          "slug": "section-07",
+          "title": {
+            "en": "Integration & Event Platform",
+            "fr": "Plateforme d’intégration et événements"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 8,
+          "id": "ZAF-IV-08",
+          "slug": "section-08",
+          "title": {
+            "en": "Object Storage & Evidence Services",
+            "fr": "Stockage objet et services de preuves"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 9,
+          "id": "ZAF-IV-09",
+          "slug": "section-09",
+          "title": {
+            "en": "Build, Delivery & Artifact Platform",
+            "fr": "Plateforme de build, livraison et artefacts"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 10,
+          "id": "ZAF-IV-10",
+          "slug": "section-10",
+          "title": {
+            "en": "Observability Platform",
+            "fr": "Plateforme d’observabilité"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 11,
+          "id": "ZAF-IV-11",
+          "slug": "section-11",
+          "title": {
+            "en": "Backup & Recovery Platform",
+            "fr": "Plateforme de sauvegarde et reprise"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 12,
+          "id": "ZAF-IV-12",
+          "slug": "section-12",
+          "title": {
+            "en": "Platform Acceptance & Handover",
+            "fr": "Acceptation et transfert des plateformes"
+          },
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "roman": "V",
+      "slug": "book-v",
+      "title": {
+        "en": "Operations Handbook",
+        "fr": "Manuel d’exploitation"
+      },
+      "summary": {
+        "en": "Day-to-day operating procedures, service ownership and controlled intervention.",
+        "fr": "Procédures d’exploitation, responsabilité des services et interventions contrôlées."
+      },
+      "status": "planned",
+      "structure": "proposed",
+      "sections": [
+        {
+          "number": 1,
+          "id": "ZAF-V-01",
+          "slug": "section-01",
+          "title": {
+            "en": "Service Catalog & Operating Ownership",
+            "fr": "Catalogue de services et responsabilités"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 2,
+          "id": "ZAF-V-02",
+          "slug": "section-02",
+          "title": {
+            "en": "Access & Administrative Procedures",
+            "fr": "Accès et procédures administratives"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 3,
+          "id": "ZAF-V-03",
+          "slug": "section-03",
+          "title": {
+            "en": "Service Requests & Routine Tasks",
+            "fr": "Demandes de service et tâches courantes"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 4,
+          "id": "ZAF-V-04",
+          "slug": "section-04",
+          "title": {
+            "en": "Change & Release Operations",
+            "fr": "Exploitation des changements et versions"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 5,
+          "id": "ZAF-V-05",
+          "slug": "section-05",
+          "title": {
+            "en": "Incident Coordination & Communication",
+            "fr": "Coordination et communication des incidents"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 6,
+          "id": "ZAF-V-06",
+          "slug": "section-06",
+          "title": {
+            "en": "Problem Management & Recurring Failures",
+            "fr": "Problèmes et défaillances récurrentes"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 7,
+          "id": "ZAF-V-07",
+          "slug": "section-07",
+          "title": {
+            "en": "Backup, Restore & Continuity Procedures",
+            "fr": "Procédures de sauvegarde, restauration et continuité"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 8,
+          "id": "ZAF-V-08",
+          "slug": "section-08",
+          "title": {
+            "en": "Patching & Maintenance Windows",
+            "fr": "Correctifs et fenêtres de maintenance"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 9,
+          "id": "ZAF-V-09",
+          "slug": "section-09",
+          "title": {
+            "en": "Capacity, Cost & Resource Operations",
+            "fr": "Capacité, coûts et ressources"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 10,
+          "id": "ZAF-V-10",
+          "slug": "section-10",
+          "title": {
+            "en": "Supplier & Dependency Operations",
+            "fr": "Exploitation des dépendances et fournisseurs"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 11,
+          "id": "ZAF-V-11",
+          "slug": "section-11",
+          "title": {
+            "en": "Knowledge, Runbooks & Handover",
+            "fr": "Connaissances, procédures et transfert"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 12,
+          "id": "ZAF-V-12",
+          "slug": "section-12",
+          "title": {
+            "en": "Service Reviews & Operational Evidence",
+            "fr": "Revues de service et preuves opérationnelles"
+          },
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "roman": "VI",
+      "slug": "book-vi",
+      "title": {
+        "en": "Developer Handbook",
+        "fr": "Manuel du développeur"
+      },
+      "summary": {
+        "en": "The developer journey from onboarding to reviewed, tested and documented delivery.",
+        "fr": "Parcours du développeur : intégration, réalisation, revue, tests et livraison documentée."
+      },
+      "status": "planned",
+      "structure": "proposed",
+      "sections": [
+        {
+          "number": 1,
+          "id": "ZAF-VI-01",
+          "slug": "section-01",
+          "title": {
+            "en": "Onboarding & Engineering Responsibilities",
+            "fr": "Intégration et responsabilités"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 2,
+          "id": "ZAF-VI-02",
+          "slug": "section-02",
+          "title": {
+            "en": "Local Development Environment",
+            "fr": "Environnement de développement local"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 3,
+          "id": "ZAF-VI-03",
+          "slug": "section-03",
+          "title": {
+            "en": "Repository & Module Conventions",
+            "fr": "Conventions des dépôts et modules"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 4,
+          "id": "ZAF-VI-04",
+          "slug": "section-04",
+          "title": {
+            "en": "Domain Implementation Workflow",
+            "fr": "Réalisation des domaines métier"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 5,
+          "id": "ZAF-VI-05",
+          "slug": "section-05",
+          "title": {
+            "en": "API & Integration Development",
+            "fr": "Développement API et intégrations"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 6,
+          "id": "ZAF-VI-06",
+          "slug": "section-06",
+          "title": {
+            "en": "Data Access & Database Changes",
+            "fr": "Accès aux données et modifications des bases"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 7,
+          "id": "ZAF-VI-07",
+          "slug": "section-07",
+          "title": {
+            "en": "Testing & Debugging Workflow",
+            "fr": "Tests et débogage"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 8,
+          "id": "ZAF-VI-08",
+          "slug": "section-08",
+          "title": {
+            "en": "Secure Development Practices",
+            "fr": "Pratiques de développement sécurisé"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 9,
+          "id": "ZAF-VI-09",
+          "slug": "section-09",
+          "title": {
+            "en": "Code Review & Collaboration",
+            "fr": "Revue de code et collaboration"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 10,
+          "id": "ZAF-VI-10",
+          "slug": "section-10",
+          "title": {
+            "en": "Build, Release & Runtime Feedback",
+            "fr": "Build, livraison et retour d’exploitation"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 11,
+          "id": "ZAF-VI-11",
+          "slug": "section-11",
+          "title": {
+            "en": "Documentation & Decision Contributions",
+            "fr": "Documentation et contributions aux décisions"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 12,
+          "id": "ZAF-VI-12",
+          "slug": "section-12",
+          "title": {
+            "en": "Developer Support & Continuous Improvement",
+            "fr": "Support développeur et amélioration continue"
+          },
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "roman": "VII",
+      "slug": "book-vii",
+      "title": {
+        "en": "Security Handbook",
+        "fr": "Manuel de sécurité"
+      },
+      "summary": {
+        "en": "Practical security responsibilities, controls, evidence and response playbooks.",
+        "fr": "Responsabilités de sécurité, contrôles, preuves et procédures de réponse."
+      },
+      "status": "planned",
+      "structure": "proposed",
+      "sections": [
+        {
+          "number": 1,
+          "id": "ZAF-VII-01",
+          "slug": "section-01",
+          "title": {
+            "en": "Security Governance & Responsibilities",
+            "fr": "Gouvernance et responsabilités de sécurité"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 2,
+          "id": "ZAF-VII-02",
+          "slug": "section-02",
+          "title": {
+            "en": "Classification & Information Handling",
+            "fr": "Classification et traitement de l’information"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 3,
+          "id": "ZAF-VII-03",
+          "slug": "section-03",
+          "title": {
+            "en": "Identity & Privileged Access",
+            "fr": "Identité et accès privilégiés"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 4,
+          "id": "ZAF-VII-04",
+          "slug": "section-04",
+          "title": {
+            "en": "Credentials, Keys & Certificates",
+            "fr": "Identifiants, clés et certificats"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 5,
+          "id": "ZAF-VII-05",
+          "slug": "section-05",
+          "title": {
+            "en": "Application & API Security",
+            "fr": "Sécurité applicative et API"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 6,
+          "id": "ZAF-VII-06",
+          "slug": "section-06",
+          "title": {
+            "en": "Data Protection & Retention",
+            "fr": "Protection et conservation des données"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 7,
+          "id": "ZAF-VII-07",
+          "slug": "section-07",
+          "title": {
+            "en": "Network & Infrastructure Security",
+            "fr": "Sécurité réseau et infrastructure"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 8,
+          "id": "ZAF-VII-08",
+          "slug": "section-08",
+          "title": {
+            "en": "Software Supply Chain Security",
+            "fr": "Sécurité de la chaîne logicielle"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 9,
+          "id": "ZAF-VII-09",
+          "slug": "section-09",
+          "title": {
+            "en": "Vulnerability & Exposure Management",
+            "fr": "Gestion des vulnérabilités et expositions"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 10,
+          "id": "ZAF-VII-10",
+          "slug": "section-10",
+          "title": {
+            "en": "Security Monitoring & Investigation",
+            "fr": "Supervision et investigation de sécurité"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 11,
+          "id": "ZAF-VII-11",
+          "slug": "section-11",
+          "title": {
+            "en": "Security Incident & Recovery Playbooks",
+            "fr": "Procédures d’incident et reprise de sécurité"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 12,
+          "id": "ZAF-VII-12",
+          "slug": "section-12",
+          "title": {
+            "en": "Security Evidence, Exceptions & Review",
+            "fr": "Preuves, exceptions et revues de sécurité"
+          },
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "roman": "VIII",
+      "slug": "book-viii",
+      "title": {
+        "en": "Site Reliability",
+        "fr": "Fiabilité des services"
+      },
+      "summary": {
+        "en": "User-centred reliability objectives, incident learning and sustainable operations.",
+        "fr": "Objectifs de fiabilité centrés sur les utilisateurs, apprentissage des incidents et exploitation durable."
+      },
+      "status": "planned",
+      "structure": "proposed",
+      "sections": [
+        {
+          "number": 1,
+          "id": "ZAF-VIII-01",
+          "slug": "section-01",
+          "title": {
+            "en": "Critical User Journeys & Service Boundaries",
+            "fr": "Parcours critiques et frontières des services"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 2,
+          "id": "ZAF-VIII-02",
+          "slug": "section-02",
+          "title": {
+            "en": "SLIs, SLOs & Reliability Objectives",
+            "fr": "SLI, SLO et objectifs de fiabilité"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 3,
+          "id": "ZAF-VIII-03",
+          "slug": "section-03",
+          "title": {
+            "en": "Error Budgets & Release Decisions",
+            "fr": "Budgets d’erreur et décisions de livraison"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 4,
+          "id": "ZAF-VIII-04",
+          "slug": "section-04",
+          "title": {
+            "en": "Monitoring & Actionable Alerting",
+            "fr": "Supervision et alertes exploitables"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 5,
+          "id": "ZAF-VIII-05",
+          "slug": "section-05",
+          "title": {
+            "en": "Capacity & Performance Engineering",
+            "fr": "Ingénierie de capacité et performance"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 6,
+          "id": "ZAF-VIII-06",
+          "slug": "section-06",
+          "title": {
+            "en": "Dependency & Failure Analysis",
+            "fr": "Analyse des dépendances et défaillances"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 7,
+          "id": "ZAF-VIII-07",
+          "slug": "section-07",
+          "title": {
+            "en": "Reliability Testing & Safe Experiments",
+            "fr": "Tests de fiabilité et expériences contrôlées"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 8,
+          "id": "ZAF-VIII-08",
+          "slug": "section-08",
+          "title": {
+            "en": "Incident Response & Coordination",
+            "fr": "Réponse aux incidents et coordination"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 9,
+          "id": "ZAF-VIII-09",
+          "slug": "section-09",
+          "title": {
+            "en": "Disaster Recovery Exercises",
+            "fr": "Exercices de reprise après sinistre"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 10,
+          "id": "ZAF-VIII-10",
+          "slug": "section-10",
+          "title": {
+            "en": "Postmortems & Learning",
+            "fr": "Analyses après incident et apprentissage"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 11,
+          "id": "ZAF-VIII-11",
+          "slug": "section-11",
+          "title": {
+            "en": "Toil Reduction & Sustainable Support",
+            "fr": "Réduction du travail répétitif et support durable"
+          },
+          "status": "planned"
+        },
+        {
+          "number": 12,
+          "id": "ZAF-VIII-12",
+          "slug": "section-12",
+          "title": {
+            "en": "Production Readiness & Reliability Review",
+            "fr": "Préparation à la production et revue de fiabilité"
+          },
+          "status": "planned"
+        }
+      ]
+    }
+  ],
+  "firstSection": {
+    "version": "0.1.0",
+    "status": "draft",
+    "author": "Elvis Ndayishimiye",
+    "review": "Editorial review pending",
+    "body": {
+      "en": "\n## 1.1 Purpose of institutional architecture\nInstitutional architecture explains how an organization fulfils its mandate through capabilities, responsibilities, information, services and relationships. Its subject is the institution’s ability to act coherently. Applications and infrastructure are important implementations, but neither the presence of software nor the number of platforms establishes that coherence.\nThis chapter establishes the foundation for the ZAF library. It defines the decisions that precede engineering architecture and the evidence needed to carry them into Book II. It is a working draft for review. It does not assert that the whole ZAF collection is complete, externally reviewed or adopted by an institution.\nThe question is not “what system should we buy?” The question is “what must this institution be able to do, under whose authority, with which information, and with what accountability when the normal process fails?”\n\n## 1.2 The architecture mandate\nAn architecture mandate authorizes a defined scope of analysis and decision support. It names the sponsor, institutional boundary, decision rights, access constraints and expected work products. It must distinguish recommendation from authority: an architect may recommend a delegation model without possessing the legal or organizational power to grant that delegation.\n| Mandate field | Required decision | Evidence to retain |\n| Sponsor | Who authorizes the architecture work? | Recorded sponsorship and escalation route |\n| Scope | Which institution, service or cross-institution journey is included? | Boundary statement and exclusions |\n| Decision rights | Who accepts policy, risk and investment decisions? | Named decision owners and delegates |\n| Access | Which records, staff and environments may be examined? | Authorized assessment boundary |\n| Deliverables | Which decisions and artifacts will the work support? | Agreed work-product register |\n| Acceptance | Who reviews factual accuracy and who accepts recommendations? | Review and acceptance responsibilities |\nAn architecture mandate is not a permission to perform intrusive testing, copy every database or publish institutional material. Discovery and publication require their own authorized boundaries. Where authority is unclear, record the open question and the decision it prevents.\n\n## 1.3 Institutional promise and measurable outcomes\nThe institutional promise states what stakeholders should be able to rely on. It should be understandable without naming a product. In an operational approval service, the promise may be that an accepted request has an identifiable origin, an authorized decision, an explainable state and a route for correction or recovery.\nTranslate that promise into observable outcomes. Separate the citizen or staff outcome from the technical service measure. A two-second interface response does not prove that an application was resolved fairly or within the institution’s decision period. Equally, a policy delay should not be hidden inside a software availability metric.\n| Outcome question | Candidate evidence | Interpretation limit |\n| Can the applicant learn the authoritative state? | Journey walkthrough and state history | A sample does not prove every service behaves the same way |\n| Can a reviewer explain the decision? | Linked version, authority and reason | A status label alone is insufficient |\n| Can a disputed record be corrected lawfully? | Defined amendment and review path | Engineering cannot invent the governing policy |\n| Can service resume after interruption? | Exercised continuity procedure | A configured backup is not a demonstrated recovery |\nThe owner decides acceptable targets after impact, cost and operating capability are examined. Do not attach impressive percentages to an institution that has not measured a baseline.\n\n## 1.4 Institution, ecosystem and boundary\nThe institution is not identical to its application estate. It includes people, policies, funding, delegated powers, information ownership, partners and manual work. A process that depends on a telephone confirmation or a paper register belongs in the assessment even when it has no API.\nIdentify the system of interest at the appropriate scale. A single department, an institution-wide platform and a national ecosystem require different decision rights. Extending a local design into a multi-institution platform introduces authority and agreement questions that capacity planning alone cannot answer.\n{{figure:institution}}\nThe view distinguishes the institutional mandate from domain responsibilities and enabling engineering. It is conceptual: it does not prescribe separate services, teams or physical infrastructure. Its value is to make the responsibility boundary visible before products are selected.\n\n## 1.5 Stakeholders, concerns and authority\nA stakeholder register is useful when it connects a person or role to a concern and an actual decision. “Management” is too broad when several authorities disagree. Record who uses the service, who owns its rules, who operates it, who is affected by its failure and who may challenge the outcome.\n| Stakeholder | Concern to investigate | Decision or contribution |\n| Service users | Access, clarity, cost of failure and correction | Validate the complete journey |\n| Business owner | Mandate, authority and intended outcome | Approve business meaning and scope |\n| Data owner | Meaning, permitted use and retention | Approve definitions and information boundaries |\n| System owner | Operability, support and recovery | Accept operating responsibility |\n| Risk or policy authority | Residual exposure and governing obligations | Accept treatment or require a change |\n| Delivery team | Feasibility, dependencies and verification | Produce implementation evidence |\nThe register does not imply that one person must fill each role. Small teams may combine duties, while still making conflicts and critical independent checks explicit. A blank responsibility is an unresolved risk, not an implicit assignment to a supplier.\n\n## 1.6 Capabilities, services and value streams\nA capability describes what the institution must be able to do. A service presents a usable outcome to a stakeholder. A value stream connects activities that deliver that outcome. Keeping these concepts distinct avoids naming every screen as a capability or treating an organizational chart as the architecture.\nFor an approval journey, capabilities may include receiving requests, evaluating eligibility, authorizing action, executing it and reconciling the result. The service is the complete experience of obtaining and understanding a decision. Shared identity or notification supports that service but does not own its policy.\nDocument the successful path, rejection, withdrawal, amendment and interruption. A beautiful diagram of the happy path can hide the situations where institutional trust is actually tested.\n\n## 1.7 Ownership and the operating model\nInstitutional architecture assigns authority over facts and decisions. If two systems can independently declare the same request approved, the issue is not merely duplication of storage: the institution has competing authorities. Name the owner of the authoritative fact and define how copies, projections and corrections relate to it.\nThe operating model explains how responsibilities cooperate. Shared capabilities should reduce repeated effort without taking over every domain decision. Domain autonomy should support change without allowing incompatible meanings or unaccountable exceptions.\n| Architectural distinction | Institution-level decision | Engineering consequence |\n| Authoritative fact versus copy | Who owns meaning and correction? | Source identifiers, versions and lineage |\n| Common capability versus local policy | Which rules are shared? | Platform contract and domain boundary |\n| Delegated action versus unrestricted access | Who may act, where and until when? | Scoped authorization and access lifecycle |\n| Service outcome versus component health | What must users rely on? | User-journey signals and operating response |\n\n## 1.8 Evidence, assumptions and institutional assessment\nSeparate observation, testimony, assumption and recommendation. A user complaint is evidence of an experienced problem; it is not automatically proof of its technical cause. A sampled contradiction is a finding within that sample; it is not a measured institution-wide failure rate.\nMaintain an evidence register with source, date or period, access boundary, interpretation and uncertainty. Preserve only the material required for the agreed purpose. Redacted traces and approved samples may be enough; large uncontrolled exports increase risk without necessarily improving the decision.\nA proposed future state should explain which finding or goal it addresses. If a component cannot be linked to a responsibility, concern or scenario, challenge its inclusion.\n\n## 1.9 Institutional principles\nPrinciples should constrain decisions rather than praise every possible solution. Each principle needs a rationale, an implementation consequence and an exception route.\n| Principle | Institutional meaning | Decision consequence |\n| Purpose before technology | Capabilities and mandate govern investments | Products are selected after requirements and ownership |\n| One authority for each fact | Meaning and correction have an accountable owner | Copies disclose source and freshness |\n| Explicit responsibility | Trust depends on known decision and service owners | Critical boundaries cannot remain unassigned |\n| Local reality before imported complexity | Connectivity, staffing and continuity matter | Architecture fits the environment that will operate it |\n| Evidence before a maturity claim | Installed components do not prove outcomes | Acceptance requires observed behaviour |\n| Evolution with preserved rationale | Future teams need the reasons for present choices | Decisions retain alternatives, consequences and review triggers |\nThese are draft ZAF principles for examination, not universal rules imposed on every organization. An adopting institution must decide their applicability and approval mechanism.\n\n## 1.10 Worked institutional example\nConsider a fictional regional institution with a headquarters, six offices and a small engineering team. Its operational requests move through spreadsheets, email approval and manual reporting. The illustrative problem is the inability to connect fulfilment confidently to the exact authorized request version.\nThe institutional recommendation is to establish authoritative approval, ownership of execution facts and agreed reporting definitions. It is not yet a recommendation to deploy Kubernetes or Kafka. Those decisions belong to Book II after the operating constraints and architectural needs are established.\n| Record | Institutional finding or decision | Next evidence |\n| OBS-01 | Different reference conventions are a constructed scenario finding | Compare permitted source samples in a real assessment |\n| DEC-01 | One owner must approve the request’s meaning and lifecycle | Named owner and agreed transitions |\n| DEC-02 | Final approval remains online in the initial example | Business acceptance of waiting during interruption |\n| OPEN-01 | Recovery target is not yet an institutional commitment | Impact assessment and tested feasibility |\nThe example demonstrates reasoning, not client delivery. No actual institution, efficiency gain, fraud reduction or operating result is claimed.\n\n## 1.11 Institutional risks and unresolved decisions\nImportant uncertainties should be visible before engineering begins. Data placement, retention, delegated authority, interruption tolerance, supplier responsibility and funding for operation may materially change the feasible solution.\nA risk register links cause, consequence, evidence, treatment and acceptance authority. Prioritization should consider harm and uncertainty. A high-risk unknown can justify a discovery task before a large implementation commitment.\nDo not accept a risk on behalf of the institution merely because an implementation is technically possible. The architect records consequences and alternatives; the authorized owner accepts the residual exposure.\n\n## 1.12 The institutional architecture artifact package\n| Artifact ID | Work product | Acceptance evidence |\n| ZAF-I-01-A01 | Architecture mandate | Scope, authority and review responsibilities recorded |\n| ZAF-I-01-A02 | Stakeholder and concern register | Material concerns have owners and decision routes |\n| ZAF-I-01-A03 | Institutional promise and outcome scenarios | Outcomes distinguish user, policy and technical concerns |\n| ZAF-I-01-A04 | Capability and responsibility map | No critical decision or fact has competing unexplained authority |\n| ZAF-I-01-A05 | Evidence and uncertainty register | Findings are traceable and limitations are visible |\n| ZAF-I-01-A06 | Principles and institutional decision log | Rationale, alternatives and review triggers retained |\nThese identifiers support later cross-references. A project may tailor the package, but it should record why an artifact is unnecessary rather than silently omitting the responsibility it represents.\n\n## 1.13 Handoff to Book II — Engineering Architecture\nBook II consumes the accepted institutional decisions and translates them into reference architectures, technology standards, platform contracts and engineering responsibilities. It does not replace the institutional mandate or invent missing policy.\n{{figure:handoff}}\n| Institutional input | Book II response | Verification question |\n| Approved capability and owner | Reference architecture and domain responsibilities | Does the technical boundary preserve authority? |\n| Information policy and source meaning | Enterprise data and security architecture | Can a projection be traced and corrected appropriately? |\n| Continuity and operating constraints | Infrastructure, network and operations architecture | Can the actual team operate and recover it? |\n| Governance and exception rules | Technology governance and architecture decisions | Are changes reviewable and reversible where required? |\nA technology chapter can be conditional. The dedicated Kubernetes architecture section belongs in Book II, while its applicability must follow an approved adoption decision. The existence of the chapter does not mandate Kubernetes for every engagement.\n\n## 1.14 Review checklist for this draft\n- The institution and assessment boundary are explicit.\n- Mandate, recommendation and approval authority are distinguished.\n- Stakeholder concerns connect to decisions rather than generic role lists.\n- Capabilities and information have accountable owners.\n- Rejected, amended and interrupted journeys are included.\n- Findings distinguish evidence from assumptions.\n- Technology selection does not precede institutional decisions.\n- Unresolved risks have owners and required next evidence.\n- Artifacts have stable identifiers and review responsibility.\n- Book II receives explicit institutional inputs.\nThis is a review checklist, not evidence that a particular institution has passed it. Review results should identify the version examined, reviewer, scope, findings and disposition.\n\n## 1.15 Decisions required before advancing\nThe editor and adopting organization should resolve the scope of the institutional model, confirm the next section’s concerns and review this draft’s terminology. A draft becomes accepted only through the library’s documented review process; publishing it on the website does not constitute approval.\nThe next Book I section is Institutional Context & Stakeholder Concerns. It should extend the mandate into a documented context model, concern register, viewpoints and a discovery plan. Engineering implementation remains outside this first section’s acceptance claim.\n",
+      "fr": "\n## 1.1 Finalité de l’architecture institutionnelle\nL’architecture institutionnelle explique comment une organisation accomplit son mandat à travers capacités, responsabilités, information, services et relations. Les logiciels sont des réalisations possibles ; leur présence ne prouve pas la cohérence de l’institution.\nCette section fonde la bibliothèque ZAF et les décisions qui précèdent le Livre II. Elle est un brouillon de travail. Elle ne déclare ni l’achèvement des huit livres, ni une revue externe, ni une adoption institutionnelle.\nLa question initiale est : que doit accomplir l’institution, sous quelle autorité, avec quelles informations et quelle responsabilité en cas d’échec ?\n\n## 1.2 Mandat d’architecture\nLe mandat définit sponsor, périmètre, autorité, accès et livrables. L’architecte recommande une délégation sans posséder nécessairement le pouvoir de l’accorder.\n| Élément | Décision | Preuve conservée |\n| Sponsor | Autorité qui engage le travail | Sponsorship et escalade |\n| Périmètre | Institution, service ou parcours concerné | Frontières et exclusions |\n| Droits de décision | Autorité des politiques, risques et investissements | Responsables et délégations |\n| Accès | Données, personnes et environnements autorisés | Périmètre d’évaluation |\n| Livrables | Décisions soutenues par le travail | Registre des pièces attendues |\n| Acceptation | Validation des faits et des recommandations | Responsabilités de revue |\nLe mandat n’autorise pas automatiquement des tests intrusifs, des exports complets ou la publication de données institutionnelles. Toute autorité incertaine reste une question ouverte.\n\n## 1.3 Promesse et résultats institutionnels\nLa promesse décrit ce sur quoi les acteurs doivent pouvoir compter, sans nommer un produit. Pour un service d’approbation, une demande acceptée possède une origine, une décision autorisée, un état explicable et une voie de correction ou de reprise.\nSéparer résultat utilisateur, décision métier et mesure technique. Une interface rapide ne prouve pas une décision juste ou rendue dans le délai institutionnel.\n| Question | Preuve candidate | Limite |\n| État faisant autorité accessible ? | Parcours et historique | L’échantillon ne prouve pas tous les services |\n| Décision explicable ? | Version, autorité et motif | Un statut seul est insuffisant |\n| Correction permise ? | Circuit d’amendement | L’ingénierie ne crée pas la politique |\n| Reprise possible ? | Exercice vérifié | Sauvegarde configurée différente de reprise démontrée |\nLes objectifs chiffrés suivent analyse d’impact, coûts et capacité d’exploitation. Ils ne doivent pas être inventés avant mesure.\n\n## 1.4 Institution et écosystème\nL’institution comprend personnes, politiques, financement, délégations, propriétaires d’information, partenaires et tâches manuelles. Un registre papier ou un appel de confirmation appartient au fonctionnement réel.\nUne architecture de service, d’institution et d’écosystème national exige des autorités différentes. La capacité technique ne résout pas seule la coopération entre institutions.\n{{figure:institution}}\nCette vue sépare mandat, responsabilités métier et réalisation technique. Elle ne prescrit ni microservices ni équipes distinctes.\n\n## 1.5 Acteurs, préoccupations et autorité\nUn registre relie acteur, préoccupation et décision. « Direction » ne suffit pas lorsque plusieurs autorités divergent.\n| Acteur | Préoccupation | Contribution |\n| Utilisateurs | Accès, clarté et correction | Valider le parcours complet |\n| Responsable métier | Mandat et résultat | Approuver le sens et le périmètre |\n| Propriétaire des données | Sens, usage et conservation | Approuver les définitions |\n| Responsable système | Exploitation et reprise | Accepter la responsabilité opérationnelle |\n| Autorité des risques | Exposition résiduelle | Accepter ou imposer un traitement |\n| Équipe de réalisation | Faisabilité et vérification | Produire les preuves techniques |\nPlusieurs rôles peuvent être réunis, mais conflits et contrôles critiques restent explicites. Une responsabilité vide ne se transfère pas implicitement au fournisseur.\n\n## 1.6 Capacités, services et chaînes de valeur\nUne capacité décrit ce que l’institution sait accomplir. Un service présente un résultat utilisable. Une chaîne de valeur relie les activités nécessaires. Un écran n’est donc pas automatiquement une capacité.\nPour une approbation : recevoir, examiner, autoriser, exécuter et rapprocher. Identité et notification soutiennent le parcours sans posséder sa politique. Documenter aussi refus, retrait, amendement et interruption.\n\n## 1.7 Responsabilité et modèle de fonctionnement\nSi deux systèmes peuvent déclarer indépendamment la même demande approuvée, l’institution possède des autorités concurrentes. Nommer le propriétaire du fait et les relations entre copies, projections et corrections.\n| Distinction | Décision institutionnelle | Conséquence technique |\n| Référence et copie | Propriété du sens et de la correction | Identifiants, versions et traçabilité |\n| Capacité commune et règle locale | Règles partagées | Contrats plateforme et frontières métier |\n| Délégation et accès général | Qui agit, où et jusqu’à quand ? | Autorisation limitée et cycle des accès |\n| Résultat et santé des composants | Promesse aux utilisateurs | Signaux de parcours et réponse opérationnelle |\nLe partage doit réduire la duplication sans absorber toutes les décisions métier. L’autonomie doit préserver des règles cohérentes.\n\n## 1.8 Preuves et hypothèses\nDistinguer observation, témoignage, hypothèse et recommandation. Une plainte indique un problème vécu sans prouver sa cause technique. Une contradiction dans un échantillon ne représente pas un taux global.\nConserver source, période, autorisation, interprétation et incertitude. Minimiser les copies. Chaque élément cible doit répondre à un objectif, un constat ou une responsabilité.\n\n## 1.9 Principes institutionnels\n| Principe | Sens | Conséquence |\n| Finalité avant technologie | Le mandat gouverne l’investissement | Produits après exigences et responsabilités |\n| Une autorité par fait | Correction attribuée | Copies avec source et fraîcheur |\n| Responsabilité explicite | Confiance attribuable | Aucun service critique sans responsable |\n| Réalité locale | Réseau et personnel comptent | Complexité adaptée à l’exploitation |\n| Preuve avant maturité annoncée | Installation différente de résultat | Acceptation par comportement observé |\n| Évolution avec justification | Préserver les raisons | Options, conséquences et déclencheurs conservés |\nCes principes sont proposés pour revue. Une institution adopte leur applicabilité et son mécanisme d’exception.\n\n## 1.10 Exemple institutionnel\nUne institution fictive possède un siège, six antennes et une petite équipe technique. Tableurs, emails et rapports manuels ne permettent pas de relier sûrement l’exécution à la version autorisée.\nLa recommandation institutionnelle consiste à établir approbation faisant autorité, propriété des faits d’exécution et définitions du reporting. Kafka ou Kubernetes ne sont pas encore décidés.\n| Référence | Constat ou décision | Prochaine preuve |\n| OBS-01 | Conventions différentes dans le scénario construit | Échantillons autorisés |\n| DEC-01 | Un propriétaire du cycle de demande | Responsable et transitions convenus |\n| DEC-02 | Approbation finale en ligne au départ | Acceptation de l’attente pendant coupure |\n| OPEN-01 | Objectif de reprise non engagé | Impact et faisabilité testée |\nCet exemple n’est pas une réalisation client et ne revendique aucun gain mesuré.\n\n## 1.11 Risques et décisions ouvertes\nLocalisation, conservation, délégation, interruption tolérable, fournisseur et financement opérationnel peuvent modifier la solution. Les rendre visibles avant réalisation.\nLe registre relie cause, conséquence, preuve, traitement et autorité d’acceptation. Une inconnue critique peut justifier de la découverte avant investissement. L’architecte ne doit pas accepter le risque à la place de l’autorité institutionnelle.\n\n## 1.12 Pièces d’architecture\n| Identifiant | Pièce | Preuve d’acceptation |\n| ZAF-I-01-A01 | Mandat | Périmètre et autorités enregistrés |\n| ZAF-I-01-A02 | Registre des acteurs | Préoccupations et décisions attribuées |\n| ZAF-I-01-A03 | Promesse et scénarios | Résultats utilisateur, métier et techniques distingués |\n| ZAF-I-01-A04 | Capacités et responsabilités | Autorité critique non concurrente |\n| ZAF-I-01-A05 | Preuves et incertitudes | Constats traçables et limites visibles |\n| ZAF-I-01-A06 | Principes et décisions | Justifications et révisions conservées |\nUne adaptation du dossier doit expliquer les omissions plutôt que masquer la responsabilité correspondante.\n\n## 1.13 Passage au Livre II\nLe Livre II transforme les décisions institutionnelles acceptées en architectures de référence, standards technologiques et responsabilités d’ingénierie. Il ne remplace pas le mandat.\n{{figure:handoff}}\n| Entrée institutionnelle | Réponse du Livre II | Question |\n| Capacité et propriétaire | Architecture de référence | Autorité préservée ? |\n| Politique d’information | Architecture données et sécurité | Traçabilité et correction possibles ? |\n| Continuité et exploitation | Infrastructure et opérations | Équipe capable de reprendre ? |\n| Gouvernance | Décisions technologiques | Changements révisables ? |\nLe chapitre Kubernetes du Livre II est conservé. Son applicabilité suit une décision d’adoption ; son existence ne l’impose pas à chaque projet.\n\n## 1.14 Liste de revue\n- Périmètre explicite.\n- Mandat, recommandation et approbation distingués.\n- Préoccupations reliées aux décisions.\n- Propriétaires des capacités et informations nommés.\n- Parcours refusés, modifiés et interrompus inclus.\n- Preuves distinctes des hypothèses.\n- Choix technologiques après décisions institutionnelles.\n- Risques et prochaines preuves attribués.\n- Pièces identifiées et révisables.\n- Entrées du Livre II explicites.\nCette liste ne prouve pas une conformité institutionnelle. Enregistrer version, réviseur, périmètre, constats et décisions de traitement.\n\n## 1.15 Décision avant progression\nLa prochaine section est Contexte institutionnel et préoccupations des acteurs. Elle développe modèle de contexte, registre des préoccupations et plan de découverte.\nLa publication de ce brouillon ne constitue pas son acceptation. Le passage à un statut accepté suit le processus de revue documenté dans la bibliothèque.\n"
+    }
+  }
+}
