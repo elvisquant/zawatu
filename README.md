@@ -38,10 +38,14 @@ Content is maintained in `content/zaf_dossier.json`, rendered by `scripts/zaf_do
 
 `/zaf/` is now the living library of eight books. `content/zaf_library.json` records the catalogue, statuses, stable section IDs and Book I / Section 01 draft. `scripts/zaf_library.py` renders the catalogue, book contents, first section, editorial governance and release history.
 
-Book II preserves the founder-defined fifteen sections. Other outlines are explicitly proposed. Only Book I / Section 01 has drafted standards-library body text; no book is presented as accepted. Planned headings are not applicable rules. The previous fifteen-chapter illustrative dossier remains at `/zaf/reference-study/` with its original chapter URLs intact.
+Book II preserves the founder-defined fifteen sections. Other outlines are explicitly proposed. The initial library release drafted Book I / Section 01; subsequent drafted sections are recorded below; no book is presented as accepted. Planned headings are not applicable rules. The previous fifteen-chapter illustrative dossier remains at `/zaf/reference-study/` with its original chapter URLs intact.
 
 Publication is distinct from acceptance. Draft -> review -> accepted -> deprecated/withdrawn is an editorial process, not an automated approval system. External references are bibliographic pointers, with no claim of accreditation or clause-level conformance. Work proceeds one section and one book at a time.
 
 ### Book I / Section 02
 
 Library 0.3.0 adds `ZAF-I-02` (Institutional Context & Stakeholder Concerns) as draft 0.1.0 in English and French. Bodies are stored under `draftSections` in `content/zaf_library.json`; the catalogue records each drafted section's slug. `scripts/zaf_context_figures.py` renders two accessible native SVG views. Register IDs are scoped to the document, and cross-section references require that prefix. Sections 01 and 02 remain drafts. The next planned section is 03.
+
+### Book I / Section 03
+
+Library 0.4.0 adds `ZAF-I-03` (Institutional Purpose, Value & Public Outcomes) as draft 0.1.0 in English and French at `/zaf/books/book-i/purpose-value-outcomes/` and its `/fr/` equivalent. Fifteen subsections distinguish purpose, outputs, outcomes and impact; define four proposed outcomes, a measurement contract, baseline and target controls, options, investment viability, seven artifacts and review gates. `scripts/zaf_outcome_figures.py` supplies contribution and branching service-journey SVGs with textual alternatives. The example remains fictional and unmeasured. Book I catalogue is version 0.3.0; sections 01–03 remain drafts and Section 04 is next.
