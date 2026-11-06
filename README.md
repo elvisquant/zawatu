@@ -41,3 +41,7 @@ Content is maintained in `content/zaf_dossier.json`, rendered by `scripts/zaf_do
 Book II preserves the founder-defined fifteen sections. Other outlines are explicitly proposed. Only Book I / Section 01 has drafted standards-library body text; no book is presented as accepted. Planned headings are not applicable rules. The previous fifteen-chapter illustrative dossier remains at `/zaf/reference-study/` with its original chapter URLs intact.
 
 Publication is distinct from acceptance. Draft -> review -> accepted -> deprecated/withdrawn is an editorial process, not an automated approval system. External references are bibliographic pointers, with no claim of accreditation or clause-level conformance. Work proceeds one section and one book at a time.
+
+### Book I / Section 02
+
+Library 0.3.0 adds `ZAF-I-02` (Institutional Context & Stakeholder Concerns) as draft 0.1.0 in English and French. Bodies are stored under `draftSections` in `content/zaf_library.json`; the catalogue records each drafted section's slug. `scripts/zaf_context_figures.py` renders two accessible native SVG views. Register IDs are scoped to the document, and cross-section references require that prefix. Sections 01 and 02 remain drafts. The next planned section is 03.
