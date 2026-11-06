@@ -49,3 +49,7 @@ Library 0.3.0 adds `ZAF-I-02` (Institutional Context & Stakeholder Concerns) as 
 ### Book I / Section 03
 
 Library 0.4.0 adds `ZAF-I-03` (Institutional Purpose, Value & Public Outcomes) as draft 0.1.0 in English and French at `/zaf/books/book-i/purpose-value-outcomes/` and its `/fr/` equivalent. Fifteen subsections distinguish purpose, outputs, outcomes and impact; define four proposed outcomes, a measurement contract, baseline and target controls, options, investment viability, seven artifacts and review gates. `scripts/zaf_outcome_figures.py` supplies contribution and branching service-journey SVGs with textual alternatives. The example remains fictional and unmeasured. Book I catalogue is version 0.3.0; sections 01–03 remain drafts and Section 04 is next.
+
+### Professional profile and contact update
+
+The EN/FR About and technical profile pages distinguish Mados Group and Africonsnet employment, Smart Data Services as the founder’s software company, and Zawatu as his current independent engineering consulting practice. General contact links and enquiry drafts use contact@zawatu.com; elvis@zawatu.com remains the individual work address. Calendly buttons on About, Contact and Consultation reuse the existing configured event URL. The external event still needs its former marketing title, scope and email updated in the Calendly account; website publication does not modify that event or provision the contact mailbox.

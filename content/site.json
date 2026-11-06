@@ -1,7 +1,7 @@
 {
   "name": "Zawatu",
   "url": "https://zawatu.com",
-  "email": "hello@zawatu.com",
+  "email": "contact@zawatu.com",
   "whatsapp": "+25771400138",
   "socials": {
     "facebook": "https://www.facebook.com/share/18cqF42qcA/"
@@ -11,5 +11,6 @@
   "technical_email": "elvis@zawatu.com",
   "technical_linkedin": "https://www.linkedin.com/in/ndayishimiye-elvis-821bb7207/",
   "positioning": "Systems architecture, data platforms and engineering consulting",
-  "framework": "ZAF — Zawatu Architecture Framework"
+  "framework": "ZAF — Zawatu Architecture Framework",
+  "calendly_url": "https://calendly.com/elvis-zawatu/growth-consultation"
 }
